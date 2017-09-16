@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:nsq="http://www.youzan.com/schema/nsq"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.youzan.com/schema/nsq http://www.youzan.com/schema/nsq/spring-nsq-1.0.xsd">
+
+    <bean name="ucashierlProducer" class="com.youzan.pay.core.nsq.NsqProducer">
+        <property name="nsqConfig" ref="nsqCluserConfig"/>
+        <property name="topic" value="${nsq.consumer.topic.riskcontrol}"></property>
+    </bean>
+
+    <!--beans java集群配置-->
+    <bean name="nsqCluserConfig" class="com.youzan.pay.core.nsq.NsqConfig">
+        <property name="serverAddresses" value="${cluser.nsq.all.host}:${cluser.nsq.all.port}"/>
+    </bean>
+</beans>

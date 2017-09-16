@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryPayToolConfigServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">QueryPayToolConfigServiceClient.java</span></div><h1>QueryPayToolConfigServiceClient.java</h1><pre class="source lang-java linenums">/**
+ * Youzan.com Inc. Copyright (c) 2012-2016 All Rights Reserved.
+ */
+package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.account.api.UserMerchantService;
+import com.youzan.account.api.dto.merchant.UserMerchantDto;
+import com.youzan.account.api.dto.merchant.UserMerchantSinleRequest;
+import com.youzan.pay.core.api.model.response.ListResult;
+import com.youzan.pay.core.cache.redis.RedisCacheManager;
+import com.youzan.pay.core.utils.log.LogUtils;
+import com.youzan.pay.customer.api.PayToolsService;
+import com.youzan.pay.customer.api.request.QueryBaseWithBuyerRequest;
+import com.youzan.pay.customer.api.request.QueryConfigRequest;
+import com.youzan.pay.customer.api.result.ConfigInfo;
+import com.youzan.pay.customer.api.result.PayToolConfig;
+import com.youzan.pay.customer.api.result.Response;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 获取支付方式列表具体实现
+ *
+ * @author wulonghui
+ * @version QueryPayToolConfigServiceClientImpl.java, v 0.1 2017-02-19 17:44
+ */
+@Component
+<span class="fc" id="L35">@Slf4j</span>
+<span class="fc" id="L36">public class QueryPayToolConfigServiceClient {</span>
+
+  @Resource
+  private PayToolsService payToolsService;
+
+  @Resource
+  private UserMerchantService userMerchantService;
+
+  @Resource
+  private RedisCacheManager redisCacheManager;
+
+  public Response&lt;ConfigInfo&gt; queryConfig(QueryConfigRequest queryConfigRequest) {
+
+<span class="nc" id="L49">    LogUtils.info(log, &quot;[查询商户平台支付方式request]:{}&quot;, queryConfigRequest);</span>
+
+<span class="nc" id="L51">    Response&lt;ConfigInfo&gt; result=null;</span>
+
+<span class="nc" id="L53">    String buyerUserNo = getUserNo(queryConfigRequest);</span>
+
+
+    try {
+      QueryBaseWithBuyerRequest
+<span class="nc" id="L58">          queryBaseWithBuyerRequest =</span>
+<span class="nc" id="L59">          getQueryBaseWithBuyerRequest(queryConfigRequest, buyerUserNo);</span>
+<span class="nc" id="L60">      LogUtils.info(log, &quot;[从商户平台查询支付方式request]:{}&quot;, queryBaseWithBuyerRequest);</span>
+      ListResult&lt;PayToolConfig&gt;
+<span class="nc" id="L62">          listResult =</span>
+<span class="nc" id="L63">          payToolsService.getAvailablePayToolList(queryBaseWithBuyerRequest);</span>
+<span class="nc" id="L64">      LogUtils.info(log, &quot;[从商户平台查询支付方式结果]：{}&quot;, listResult);</span>
+<span class="nc" id="L65">      result = buildResult(listResult);</span>
+<span class="nc" id="L66">    } catch (Exception e) {</span>
+<span class="nc" id="L67">      throw new RuntimeException(&quot;merchantConfigService调用失败&quot;, e);</span>
+<span class="nc" id="L68">    }</span>
+
+<span class="nc bnc" id="L70" title="All 6 branches missed.">    if (result == null || !result.isSuccess() || result.getResult() == null</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        || result.getResult().getPayTools().isEmpty()) {</span>
+<span class="nc" id="L72">      throw new RuntimeException(&quot;支付方式查询结果为空,req=&quot; + queryConfigRequest);</span>
+    }
+
+<span class="nc" id="L75">    return result;</span>
+
+  }
+
+  private String getUserNo(QueryConfigRequest queryConfigRequest) {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    if(queryConfigRequest.getBuyerId()==null){</span>
+<span class="nc" id="L81">      return &quot;-1&quot;;</span>
+    }
+<span class="nc bnc" id="L83" title="All 4 branches missed.">    if (queryConfigRequest.getBuyerId().isEmpty() || !isNumeric(queryConfigRequest.getBuyerId())) {</span>
+<span class="nc" id="L84">      LogUtils.warn(log, &quot;[buyerId为空或者不是数字格式]&quot;);</span>
+<span class="nc" id="L85">      return &quot;-1&quot;;</span>
+    }
+    try {
+<span class="nc" id="L88">      UserMerchantSinleRequest userMerchantSinleRequest = new UserMerchantSinleRequest();</span>
+<span class="nc" id="L89">      userMerchantSinleRequest.setUserId(Long.valueOf(queryConfigRequest.getBuyerId()));</span>
+
+      //1.设置缓存key
+<span class="nc" id="L92">      String key=&quot;userId_cUserNo_&quot;+queryConfigRequest.getBuyerId();</span>
+      //2.根据key查询客户号
+<span class="nc" id="L94">      UserMerchantDto userMerchantDto=redisCacheManager.get(key,UserMerchantDto.class);</span>
+
+      //3.如果查不到就调用账号服务查询客户号，然后加入缓存
+<span class="nc bnc" id="L97" title="All 2 branches missed.">      if(userMerchantDto==null) {</span>
+<span class="nc" id="L98">        userMerchantDto = userMerchantService.getMerchantIdSingleUserId(userMerchantSinleRequest);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if (userMerchantDto == null) {</span>
+<span class="nc" id="L100">          LogUtils</span>
+<span class="nc" id="L101">              .warn(log, &quot;[根据buyerId无法查到对应客户号,buyerId]:{}&quot;, userMerchantSinleRequest.getUserId());</span>
+<span class="nc" id="L102">          return &quot;-1&quot;;</span>
+        }
+<span class="nc" id="L104">        redisCacheManager.put(&quot;userId_cUserNo_&quot;+queryConfigRequest.getBuyerId(),userMerchantDto);</span>
+      }
+
+<span class="nc" id="L107">      return String.valueOf(userMerchantDto.getMerchantId());</span>
+<span class="nc" id="L108">    }catch (Exception e){</span>
+<span class="nc" id="L109">      LogUtils.warn(e,log,&quot;[userMerchantService调用失败,userId={}]&quot;,queryConfigRequest.getBuyerId());</span>
+<span class="nc" id="L110">      return &quot;-1&quot;;</span>
+    }
+  }
+
+  private Response&lt;ConfigInfo&gt; buildResult(ListResult&lt;PayToolConfig&gt; listResult) {
+<span class="nc" id="L115">    Assert.notNull(listResult, &quot;listResult不能为空&quot;);</span>
+<span class="nc" id="L116">    Assert.notNull(listResult.getData(), &quot;listResult.getData()不能为空&quot;);</span>
+<span class="nc" id="L117">    List&lt;PayToolConfig&gt; payToolConfigs = listResult.getData();</span>
+<span class="nc" id="L118">    Response&lt;ConfigInfo&gt; response = buildResponse(payToolConfigs);</span>
+<span class="nc" id="L119">    return response;</span>
+  }
+
+  private Response&lt;ConfigInfo&gt; buildResponse(List&lt;PayToolConfig&gt; payToolConfigs) {
+<span class="nc" id="L123">    Response&lt;ConfigInfo&gt; response = new Response&lt;&gt;();</span>
+<span class="nc" id="L124">    ConfigInfo configInfo = new ConfigInfo();</span>
+<span class="nc" id="L125">    configInfo.setPayTools(payToolConfigs);</span>
+<span class="nc" id="L126">    response.setMsg(&quot;处理成功&quot;);</span>
+<span class="nc" id="L127">    response.setResultCode(&quot;0&quot;);</span>
+<span class="nc" id="L128">    response.setSuccess(true);</span>
+<span class="nc" id="L129">    response.setResult(configInfo);</span>
+<span class="nc" id="L130">    return response;</span>
+  }
+
+
+  private QueryBaseWithBuyerRequest getQueryBaseWithBuyerRequest(
+      QueryConfigRequest queryConfigRequest, String buyerUserNo) {
+<span class="nc" id="L136">    QueryBaseWithBuyerRequest queryBaseWithBuyerRequest = new QueryBaseWithBuyerRequest();</span>
+<span class="nc" id="L137">    queryBaseWithBuyerRequest.setPartnerId(Long.valueOf(queryConfigRequest.getPartnerId()));</span>
+<span class="nc" id="L138">    queryBaseWithBuyerRequest.setUserNo(Long.valueOf(queryConfigRequest.getMchId()));</span>
+<span class="nc" id="L139">    queryBaseWithBuyerRequest.setBuyerUserNo(Long.valueOf(buyerUserNo));</span>
+<span class="nc" id="L140">    return queryBaseWithBuyerRequest;</span>
+  }
+
+  public boolean isNumeric(String str) {
+<span class="nc bnc" id="L144" title="All 2 branches missed.">    if(str.isEmpty()){</span>
+<span class="nc" id="L145">      return false;</span>
+    }
+<span class="nc" id="L147">    Pattern pattern = Pattern.compile(&quot;[0-9]+&quot;);</span>
+<span class="nc" id="L148">    Matcher isNum = pattern.matcher(str);</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">    if (!isNum.matches()) {</span>
+<span class="nc" id="L150">      return false;</span>
+    }
+<span class="nc" id="L152">    return true;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

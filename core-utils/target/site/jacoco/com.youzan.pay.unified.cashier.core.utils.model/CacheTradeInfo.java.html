@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CacheTradeInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">utils</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.core.utils.model</a> &gt; <span class="el_source">CacheTradeInfo.java</span></div><h1>CacheTradeInfo.java</h1><pre class="source lang-java linenums">/**
+ * Youzan.com Inc.
+ * Copyright (c) 2012-2016 All Rights Reserved.
+ */
+package com.youzan.pay.unified.cashier.core.utils.model;
+
+import lombok.Data;
+
+/**
+ * @author wulonghui
+ * @version CacheTradeInfo.java, v 0.1 2017-06-20 00:24
+ */
+<span class="nc bnc" id="L13" title="All 180 branches missed.">@Data</span>
+public class CacheTradeInfo {
+<span class="nc" id="L15">  private String bizAction;</span>
+<span class="nc" id="L16">  private int bizProd;</span>
+<span class="nc" id="L17">  private String signType;</span>
+<span class="nc" id="L18">  private String partnerId;</span>
+<span class="nc" id="L19">  private String goodsDesc;</span>
+<span class="nc" id="L20">  private long payAmount;</span>
+<span class="nc" id="L21">  private String outBizNo;</span>
+<span class="nc" id="L22">  private String currencyCode;</span>
+<span class="nc" id="L23">  private long mchId;</span>
+<span class="nc" id="L24">  private int discountableAmount;</span>
+<span class="nc" id="L25">  private int undiscountableAmount;</span>
+<span class="nc" id="L26">  private String partnerNotifyUrl;</span>
+<span class="nc" id="L27">  private String returnUrl;</span>
+<span class="nc" id="L28">  private String memo;</span>
+<span class="nc" id="L29">  private int bizMode;</span>
+<span class="nc" id="L30">  private String mchName;</span>
+<span class="nc" id="L31">  private String goodsName;</span>
+<span class="nc" id="L32">  private String tel;</span>
+<span class="nc" id="L33">  private String appType;</span>
+<span class="nc" id="L34">  private int isNeedSuccessJump;</span>
+<span class="nc" id="L35">  private String tradeDesc;</span>
+<span class="nc" id="L36">  private String sign;</span>
+
+  //支付宝或微信一种支付方式的时候路由选择收银台页面
+<span class="nc" id="L39">  private Integer isNeedPopupView;</span>
+
+  //预付卡客户号
+<span class="nc" id="L42">  private String customerId;</span>
+
+  //商户自定义图片
+<span class="nc" id="L45">  private String imageUrl;</span>
+
+  //收银台窗口滑动文字
+<span class="nc" id="L48">  private String slideText;</span>
+
+  //预付卡卡号
+<span class="nc" id="L51">  private String valueCardNo;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

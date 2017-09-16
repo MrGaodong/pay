@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CashierRechargeServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">CashierRechargeServiceClient.java</span></div><h1>CashierRechargeServiceClient.java</h1><pre class="source lang-java linenums">/**
+ * Youzan.com Inc.
+ * Copyright (c) 2012-2016 All Rights Reserved.
+ */
+package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.pay.assetcenter.api.RechargeService;
+import com.youzan.pay.assetcenter.api.request.RechargeOrderCreatingRequest;
+import com.youzan.pay.assetcenter.api.request.RechargePayRequest;
+import com.youzan.pay.assetcenter.api.response.Response;
+import com.youzan.pay.assetcenter.api.result.RechargeOrderCreatingResult;
+import com.youzan.pay.assetcenter.api.result.RechargePayResult;
+import com.youzan.pay.core.utils.log.LogUtils;
+
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author wulonghui
+ * @version CashierRechargeServiceClient.java, v 0.1 2017-06-18 11:37
+ */
+@Component
+<span class="fc" id="L26">@Slf4j</span>
+<span class="fc" id="L27">public class CashierRechargeServiceClient {</span>
+  @Resource
+  private RechargeService rechargeService;
+
+  public Response&lt;RechargeOrderCreatingResult&gt; create(
+      RechargeOrderCreatingRequest rechargeOrderCreatingRequest) {
+
+<span class="nc" id="L34">    Response&lt;RechargeOrderCreatingResult&gt; response = new Response&lt;&gt;();</span>
+
+    try {
+<span class="nc" id="L37">      response = rechargeService.create(rechargeOrderCreatingRequest);</span>
+<span class="nc" id="L38">      LogUtils.info(log, &quot;[收单服务返回结果response]:{}&quot;, response);</span>
+<span class="nc" id="L39">    } catch (Exception e) {</span>
+<span class="nc" id="L40">      LogUtils.error(log, &quot;[调用收单服务失败]:{}&quot;, e);</span>
+<span class="nc" id="L41">      throw new RuntimeException(&quot;调用收单服务失败&quot;);</span>
+<span class="nc" id="L42">    }</span>
+
+<span class="nc bnc" id="L44" title="All 4 branches missed.">    if (!response.isSuccess() || response.getResult() == null) {</span>
+<span class="nc" id="L45">      LogUtils.error(log, &quot;[收单服务返回结果为空]&quot;);</span>
+<span class="nc" id="L46">      throw new RuntimeException(&quot;[收单服务返回结果为空]&quot;);</span>
+    }
+
+<span class="nc" id="L49">    return response;</span>
+  }
+
+  public Response&lt;RechargePayResult&gt; pay(RechargePayRequest rechargeRequest){
+<span class="nc" id="L53">    Response&lt;RechargePayResult&gt; rechargeResultBaseResponse=new Response&lt;&gt;();</span>
+    try{
+<span class="nc" id="L55">      rechargeResultBaseResponse=rechargeService.rechargePay(rechargeRequest);</span>
+<span class="nc" id="L56">    }catch (Exception e){</span>
+<span class="nc" id="L57">      LogUtils.error(log, &quot;[调用充值支付服务失败]:{}&quot;, e);</span>
+<span class="nc" id="L58">      throw new RuntimeException(&quot;调用充值支付服务失败&quot;);</span>
+<span class="nc" id="L59">    }</span>
+<span class="nc bnc" id="L60" title="All 4 branches missed.">    if(!rechargeResultBaseResponse.isSuccess()||rechargeResultBaseResponse.getResult()==null){</span>
+<span class="nc" id="L61">      LogUtils.error(log, &quot;[调用充值支付服务返回结果为空],response={}&quot;, rechargeResultBaseResponse);</span>
+<span class="nc" id="L62">      throw new RuntimeException(&quot;[调用充值支付服务返回结果为空]&quot;);</span>
+    }
+<span class="nc" id="L64">    return rechargeResultBaseResponse;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SerializationUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">utils</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.core.utils</a> &gt; <span class="el_source">SerializationUtils.java</span></div><h1>SerializationUtils.java</h1><pre class="source lang-java linenums">/**
+ * Youzan.com Inc.
+ * Copyright (c) 2012-2017 All Rights Reserved.
+ */
+package com.youzan.pay.unified.cashier.core.utils;
+
+import com.dyuproject.protostuff.LinkedBuffer;
+import com.dyuproject.protostuff.ProtostuffIOUtil;
+import com.dyuproject.protostuff.runtime.RuntimeSchema;
+
+/**
+ * 序列化工具
+ *
+ * @author twb
+ * @version SerializationUtils.java, v 0.1 2017-05-17 20:04
+ */
+<span class="nc" id="L17">public class SerializationUtils {</span>
+
+  public static &lt;T&gt; byte[] toBytes(T object, Class&lt;T&gt; clazz) {
+<span class="fc" id="L20">    RuntimeSchema&lt;T&gt; schema = RuntimeSchema.createFrom(clazz);</span>
+<span class="fc" id="L21">    byte[] bytes = ProtostuffIOUtil.toByteArray(object,</span>
+                                                schema,
+<span class="fc" id="L23">                                                LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));</span>
+<span class="fc" id="L24">    return bytes;</span>
+  }
+
+  public static &lt;T&gt; T toObject(byte[] bytes, Class&lt;T&gt; clazz) {
+<span class="fc" id="L28">    RuntimeSchema&lt;T&gt; schema = RuntimeSchema.createFrom(clazz);</span>
+<span class="fc" id="L29">    T object = schema.newMessage();</span>
+<span class="fc" id="L30">    ProtostuffIOUtil.mergeFrom(bytes, object, schema);</span>
+<span class="fc" id="L31">    return object;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

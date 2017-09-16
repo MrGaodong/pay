@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.youzan.pay.unified.cashier.api.impl"/>
+
+    <bean id="cashierSignCheck"
+          class="com.youzan.pay.unified.cashier.api.impl.CashierSignCheckImpl"/>
+
+    <bean id="tradePayTypeFactory"
+          class="com.youzan.pay.unified.cashier.api.impl.factory.TradePayTypeFactory">
+        <property name="tradePayTypeMap">
+            <map>
+                <entry key="CASH_ON_DELIVERY" value-ref="agentDeleveryPayTypeHandler"/>
+                <entry key="PEERPAY" value-ref="agentDeleveryPayTypeHandler"/>
+                <entry key="WX_JS" value-ref="wxPayTypeHandler"/>
+                <entry key="ALIPAY_WAP" value-ref="alipayTypeHandler"/>
+                <entry key="ECARD" value-ref="ecardPayTypeHandler"/>
+                <entry key="BALANCE" value-ref="balancePayTypeHandler"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="agentDeleveryPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.AgentDeliveryPayTypeHandler"/>
+
+    <bean id="alipayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.AliPayTypeHandler"/>
+
+    <bean id="ecardPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.EcardPayTypeHandler"/>
+
+    <bean id="wxPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.WxPayTypeHandler"/>
+
+    <bean id="balancePayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.BaLanceTypeHandler"/>
+
+</beans>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UnifiedPayServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">UnifiedPayServiceClient.java</span></div><h1>UnifiedPayServiceClient.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.pay.assetcenter.api.UnifiedOrderQueryService;
+import com.youzan.pay.assetcenter.api.UnifiedPayService;
+import com.youzan.pay.assetcenter.api.request.MultiPayRequest;
+import com.youzan.pay.assetcenter.api.request.SinglePayRequest;
+import com.youzan.pay.assetcenter.api.request.UnifiedOrderQueryRequest;
+import com.youzan.pay.assetcenter.api.response.Response;
+import com.youzan.pay.assetcenter.api.result.MultiPayResult;
+import com.youzan.pay.assetcenter.api.result.SinglePayResult;
+import com.youzan.pay.assetcenter.api.result.UnifiedOrderQueryResult;
+import com.youzan.pay.core.utils.log.LogUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+/**
+ * @author: clong
+ * @date: 2017-04-14
+ */
+@Component
+<span class="nc" id="L25">public class UnifiedPayServiceClient {</span>
+
+<span class="nc" id="L27">  private static final Logger logger = LoggerFactory.getLogger(UnifiedPayServiceClient.class);</span>
+
+  @Resource
+  private UnifiedPayService unifiedPayService;
+
+  @Resource
+  private UnifiedOrderQueryService unifiedOrderQueryService;
+
+  public SinglePayResult singlePay(SinglePayRequest request) {
+<span class="nc" id="L36">    LogUtils.info(logger, &quot;unifiedPayService.singlePay request: {}&quot;, request);</span>
+
+<span class="nc" id="L38">    Response&lt;SinglePayResult&gt; response = null;</span>
+    try {
+<span class="nc" id="L40">      response = unifiedPayService.singlePay(request);</span>
+<span class="nc" id="L41">    } catch (Exception e) {</span>
+<span class="nc" id="L42">      LogUtils.error(logger, &quot;调用UnifiedPayService失败&quot;, e);</span>
+<span class="nc" id="L43">      throw new RuntimeException(&quot;调用UnifiedPayService失败&quot;);</span>
+<span class="nc" id="L44">    }</span>
+
+<span class="nc bnc" id="L46" title="All 4 branches missed.">    if (!response.isSuccess() || response.getResult() == null) {</span>
+<span class="nc" id="L47">      LogUtils.error(logger, &quot;[singlePay request is not success]&quot;);</span>
+<span class="nc" id="L48">      throw new RuntimeException(&quot;singlePay request is not success&quot;);</span>
+    }
+
+<span class="nc" id="L51">    return response.getResult();</span>
+  }
+
+  public Response&lt;MultiPayResult&gt; multiPay(MultiPayRequest request) {
+
+<span class="nc" id="L56">    LogUtils.info(logger, &quot;开始调用支付dubbo服务：request＝{}&quot;, request);</span>
+
+<span class="nc" id="L58">    Response&lt;MultiPayResult&gt; response = null;</span>
+    try {
+<span class="nc" id="L60">      response = unifiedPayService.multiPay(request);</span>
+<span class="nc" id="L61">    } catch (Exception e) {</span>
+<span class="nc" id="L62">      LogUtils.info(logger, &quot;调用支付dubbo服务失败：request＝{}&quot;, request);</span>
+<span class="nc" id="L63">      throw new RuntimeException(e.getMessage());</span>
+<span class="nc" id="L64">    }</span>
+
+<span class="nc" id="L66">    LogUtils.info(logger, &quot;调用支付dubbo服务结束：response＝{}&quot;, response);</span>
+
+<span class="nc" id="L68">    return response;</span>
+  }
+
+  public long getPayAmount(String acquireNo) {
+<span class="nc" id="L72">    LogUtils.info(logger, &quot;开始调用查询收单信息dubbo服务：request＝{}&quot;, acquireNo);</span>
+<span class="nc" id="L73">    long payAmount = -1;</span>
+<span class="nc" id="L74">    UnifiedOrderQueryRequest request = new UnifiedOrderQueryRequest();</span>
+<span class="nc" id="L75">    request.setAcquireNo(acquireNo);</span>
+<span class="nc" id="L76">    Response&lt;UnifiedOrderQueryResult&gt; response = unifiedOrderQueryService.queryById(request);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">    if (response.isSuccess() == true) {</span>
+<span class="nc" id="L78">      UnifiedOrderQueryResult result = response.getResult();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">      if (result != null) {</span>
+<span class="nc" id="L80">        payAmount = result.getPayAmount();</span>
+      }
+    }
+<span class="nc" id="L83">    LogUtils.info(logger, &quot;调用查询收单信息dubbo服务结束：response＝{}&quot;, response);</span>
+<span class="nc" id="L84">    return payAmount;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

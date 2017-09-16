@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.youzan.pay</groupId>
+        <artifactId>unified.cashier</artifactId>
+        <version>20170914-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+
+    </parent>
+
+    <groupId>com.youzan.pay</groupId>
+    <artifactId>unified.cashier.deploy</artifactId>
+    <version>20170914-SNAPSHOT</version>
+
+    <name>deploy</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.service</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.api</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.api-impl</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.utils</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.model</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.dal</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.platform</groupId>
+            <artifactId>track-appender</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--天网接入-->
+        <dependency>
+            <groupId>com.youzan.skynet.appender</groupId>
+            <artifactId>skynet-appender</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan</groupId>
+            <artifactId>hawk-collect</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.platform</groupId>
+            <artifactId>bootstrap</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!-- not append assembly id in release file name -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/assembly/release.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <filters>
+            <filter>${basedir}/build/${environment}.properties</filter>
+        </filters>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/main/bin</directory>
+                <includes>
+                    <include>*.sh</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
+        </resources>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <environment>dev</environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+
+        <profile>
+            <id>perf</id>
+            <properties>
+                <environment>perf</environment>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>qa</id>
+            <properties>
+                <environment>qa</environment>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pre</id>
+            <properties>
+                <environment>pre</environment>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <environment>prod</environment>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

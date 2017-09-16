@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.youzan.pay</groupId>
+        <artifactId>unified.cashier</artifactId>
+        <version>20170914-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.youzan.pay</groupId>
+    <artifactId>unified.cashier.api-impl</artifactId>
+    <version>20170914-SNAPSHOT</version>
+
+    <name>api-impl</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.api</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.service</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay.core</groupId>
+            <artifactId>core-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>assetcenter.spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.youzan.pay.core</groupId>
+            <artifactId>mq-nsq</artifactId>
+        </dependency>
+    </dependencies>
+</project>

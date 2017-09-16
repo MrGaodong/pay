@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+       default-autowire="byName">
+
+    <description>cashier data source config</description>
+
+    <bean id="log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+        <property name="resultSetLogEnabled" value="false"/>
+        <property name="dataSourceLogEnabled" value="true"/>
+        <property name="connectionLogEnabled" value="true"/>
+        <property name="statementExecutableSqlLogEnable" value="true"/>
+    </bean>
+
+    <bean id="defaultDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <!-- 数据库连接配置-->
+        <property name="url" value="${master.jdbc.url}"/>
+        <property name="username" value="${master.jdbc.username}"/>
+        <property name="password" value="${master.jdbc.password}"/>
+        <!--初始连接数 -->
+        <property name="initialSize" value="5"/>
+        <!--druid持有的，正在运行还没有归还给druid的连接数-->
+        <property name="maxActive" value="20"/>
+        <!--最小空闲连接数 -->
+        <property name="minIdle" value="5"/>
+        <!--获取连接的最大等待时间-->
+        <property name="maxWait" value="5000"/>
+        <!-- 一条物理连接的最大等待时间-->
+        <property name="phyTimeoutMillis" value="5000"/>
+        <property name="removeAbandoned" value="true"/>
+        <!--超过180ms未连接成功则认为超时-->
+        <property name="removeAbandonedTimeout" value="180"/>
+        <!-- 如果超出最长空闲时间，是否做一次健康检查-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <!--归还连接池后，是否进行一次连接检查 -->
+        <property name="testOnReturn" value="false"/>
+        <!--sql检查 -->
+        <property name="validationQuery" value="select 1"/>
+        <!--有效查询时间-->
+        <property name="validationQueryTimeout" value="1"/>
+        <!--10s检查一次-->
+        <property name="timeBetweenEvictionRunsMillis" value="10000"/>
+        <!--空闲多久认为是空闲太长，需要踢出 -->
+        <property name="minEvictableIdleTimeMillis" value="30000"/>
+        <property name="maxEvictableIdleTimeMillis" value="300000"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="defaultAutoCommit" value="true"/>
+        <property name="logAbandoned" value="true"/>
+        <property name="connectionProperties" value="connectTimeout=1000;socketTimeout=3000"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="log-filter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="defaultSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="defaultDataSource"/>
+        <property name="mapperLocations" value="classpath*:META-INF/mapper/sqlmap-*.xml"/>
+        <property name="configLocation" value="classpath:beans/beans-mybatis-config.xml"/>
+    </bean>
+
+    <bean id="defaultTx" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="defaultDataSource"/>
+    </bean>
+
+    <bean id="transactionTemplate"
+          class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="defaultTx"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="defaultTx"/>
+</beans>

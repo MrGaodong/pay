@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <plugins>
+        <plugin interceptor="com.youzan.nova.framework.ibatis.SqlMonitorManager">
+            <property name="sql_monitor" value="true"/>
+            <property name="sql_show" value="true"/>
+            <property name="overtime_print_error" value="300"/>
+        </plugin>
+    </plugins>
+</configuration>

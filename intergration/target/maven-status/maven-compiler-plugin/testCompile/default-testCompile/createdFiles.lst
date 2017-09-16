@@ -1,0 +1,6 @@
+com/youzan/pay/unified/cashier/intergration/client/QueryPayToolConfigServiceClietTest.class
+com/youzan/pay/unified/cashier/intergration/client/AssetCenterUnifiedPayServiceClientTest.class
+com/youzan/pay/unified/cashier/intergration/client/MerchantBankCardServiceClientTest.class
+com/youzan/pay/unified/cashier/intergration/client/UserMerchantServiceClientTest.class
+com/youzan/pay/unified/cashier/intergration/BaseTest.class
+com/youzan/pay/unified/cashier/intergration/client/ChannelBankCardServiceClientTest.class

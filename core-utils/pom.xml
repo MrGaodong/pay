@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.youzan.pay</groupId>
+        <artifactId>unified.cashier</artifactId>
+        <version>20170914-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.youzan.pay</groupId>
+    <artifactId>unified.cashier.utils</artifactId>
+    <version>20170914-SNAPSHOT</version>
+
+    <name>utils</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.model</artifactId>
+            <version>20170914-SNAPSHOT</version>
+        </dependency>
+        <!-- 有赞平台组相关包依赖开始 -->
+        <dependency>
+            <groupId>com.youzan.platform</groupId>
+            <artifactId>bootstrap</artifactId>
+        </dependency>
+        <!-- 有赞平台组相关包依赖结束 -->
+
+        <!--guava缓存-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay.core</groupId>
+            <artifactId>core-utils</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--google序列化工具-->
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+        </dependency>
+
+        <!--google二维码生成工具-->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+        </dependency>
+
+        <!--redis客户端jedis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+        <!--文件上传下载客户端-->
+        <!--<dependency>-->
+            <!--<groupId>com.youzan</groupId>-->
+            <!--<artifactId>materials-api</artifactId>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

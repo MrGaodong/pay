@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetCenterUnifiedPayServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">AssetCenterUnifiedPayServiceClient.java</span></div><h1>AssetCenterUnifiedPayServiceClient.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.pay.assetcenter.api.UnifiedPayService;
+import com.youzan.pay.assetcenter.api.request.MultiPayRequest;
+import com.youzan.pay.assetcenter.api.response.Response;
+import com.youzan.pay.assetcenter.api.result.MultiPayResult;
+import com.youzan.pay.core.utils.log.LogUtils;
+import com.youzan.pay.unified.cashier.core.utils.exception.CardBaseException;
+import com.youzan.pay.unified.cashier.core.utils.resultcode.errorcode.CardErrorCode;
+import com.youzan.pay.unified.cashier.intergration.common.CashierHandleTemplate;
+import com.youzan.pay.unified.cashier.intergration.common.CashierProcessCallBack;
+
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author tao.ke Date: 2017/6/14 Time: 下午1:52
+ */
+@Component
+<span class="fc" id="L23">@Slf4j</span>
+<span class="fc" id="L24">public class AssetCenterUnifiedPayServiceClient {</span>
+
+  @Resource
+  private UnifiedPayService unifiedPayService;
+
+  /**
+   * 收单中心的多次支付接口封装
+   */
+  public MultiPayResult multiPay(MultiPayRequest request) {
+
+<span class="nc" id="L34">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;MultiPayResult&gt;() {</span>
+      @Override
+      public MultiPayResult process() {
+
+<span class="nc" id="L38">        Response&lt;MultiPayResult&gt; response = unifiedPayService.multiPay(request);</span>
+
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (response == null) {</span>
+<span class="nc" id="L41">          throw new CardBaseException(CardErrorCode.ASSET_CENTER_ORDER_PAY, &quot;&quot;);</span>
+        }
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (response.isSuccess()) {</span>
+<span class="nc" id="L45">          return response.getResult();</span>
+        } else {
+<span class="nc" id="L47">          LogUtils.warn(log, &quot;调用收单发起支付错误，result:{}&quot;, response);</span>
+<span class="nc" id="L48">          throw new CardBaseException(CardErrorCode.ASSET_CENTER_ORDER_PAY, response.getMsg());</span>
+        }
+
+      }
+
+      @Override
+      public void succ(MultiPayResult result, long execTime) {
+<span class="nc" id="L55">        LogUtils.info(log, &quot;调用收单发起支付成功，cost:{},result:{}&quot;, execTime, result);</span>
+<span class="nc" id="L56">      }</span>
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L60">        LogUtils.error(e, log, &quot;调用收单发起支付失败&quot;);</span>
+<span class="nc" id="L61">        throw new CardBaseException(CardErrorCode.ASSET_CENTER_ORDER_PAY, &quot;&quot;);</span>
+      }
+    });
+
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

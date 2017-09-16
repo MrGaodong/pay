@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+	   http://code.alibabatech.com/schema/dubbo
+	   http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:component-scan base-package="com.youzan.pay.unified.cashier.intergration.client"/>
+
+
+    <dubbo:reference id="signKeyService"
+                     interface="com.youzan.pay.customer.api.SignKeyService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="merchantConfigService"
+                     interface="com.youzan.pay.customer.api.MerchantConfigService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+
+    <dubbo:reference id="acquireOrderService"
+                     interface="com.youzan.pay.assetcenter.api.AcquireOrderService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+
+    <dubbo:reference id="unifiedPayService"
+                     interface="com.youzan.pay.assetcenter.api.UnifiedPayService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference interface="com.youzan.pay.assetcenter.api.UnifiedOrderQueryService"
+                     id="unifiedOrderQueryService"
+                     protocol="dubbo"
+                     check="false"
+                     timeout="2000"
+                     registry="haunt"/>
+
+    <dubbo:reference id="unifiedOrderService"
+                     interface="com.youzan.pay.assetcenter.api.UnifiedOrderService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="bankCardService"
+                     interface="com.youzan.pay.fundchannel.open.api.BankCardService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="merchantBankCardService"
+                     interface="com.youzan.pay.customer.api.BankCardService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="userMerchantService"
+                     interface="com.youzan.account.api.UserMerchantService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+    <dubbo:reference id="rechargeService"
+                     interface="com.youzan.pay.assetcenter.api.RechargeService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="payToolsService"
+                     interface="com.youzan.pay.customer.api.PayToolsService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+
+    <dubbo:reference id="accountService"
+                     interface="com.youzan.pay.microaccount.prepaidcard.service.AccountService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="false" registry="haunt"/>
+    <dubbo:reference id="summaryCardQueryService"
+                     interface="com.youzan.pay.cardvoucher.api.summarycard.SummaryCardQueryService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="true" registry="haunt"/>
+
+</beans>

@@ -1,0 +1,475 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] unified.cashier
+[INFO] common-utils
+[INFO] core-model
+[INFO] dal
+[INFO] core-service
+[INFO] api
+[INFO] intergration
+[INFO] api-impl
+[INFO] deploy
+[INFO] test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building unified.cashier 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier ---
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-10/doxia-sink-api-1.0-alpha-10.pom
+2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-10/doxia-sink-api-1.0-alpha-10.pom (2 KB at 3.8 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/doxia/doxia/1.0-alpha-10/doxia-1.0-alpha-10.pom
+1/9 KB   5/9 KB   7/9 KB   8/9 KB   9/9 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/doxia/doxia/1.0-alpha-10/doxia-1.0-alpha-10.pom (9 KB at 47.1 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.pom
+3/5 KB   5/5 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.pom (5 KB at 23.8 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.pom
+1/6 KB   4/6 KB   6/6 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.pom (6 KB at 25.0 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.pom
+1/4 KB   3/4 KB   4/4 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.pom (4 KB at 19.5 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.pom
+1/3 KB   3/3 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.pom (3 KB at 9.9 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.pom
+1/4 KB   3/4 KB   4/4 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.pom (4 KB at 14.3 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.pom
+3/4 KB   4/4 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.pom (4 KB at 19.4 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.pom
+3/6 KB   4/6 KB   6/6 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.pom (6 KB at 29.4 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-project/2.0.5/maven-project-2.0.5.pom
+1/2 KB   2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-project/2.0.5/maven-project-2.0.5.pom (2 KB at 8.6 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven/2.0.5/maven-2.0.5.pom
+3/6 KB   4/6 KB   5/6 KB   6/6 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven/2.0.5/maven-2.0.5.pom (6 KB at 21.5 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-settings/2.0.5/maven-settings-2.0.5.pom
+1/2 KB   2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-settings/2.0.5/maven-settings-2.0.5.pom (2 KB at 8.8 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-model/2.0.5/maven-model-2.0.5.pom
+1/3 KB   3/3 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-model/2.0.5/maven-model-2.0.5.pom (3 KB at 11.8 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-profile/2.0.5/maven-profile-2.0.5.pom
+1/2 KB   2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-profile/2.0.5/maven-profile-2.0.5.pom (2 KB at 7.3 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-artifact-manager/2.0.5/maven-artifact-manager-2.0.5.pom
+1/2 KB   2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-artifact-manager/2.0.5/maven-artifact-manager-2.0.5.pom (2 KB at 7.9 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-repository-metadata/2.0.5/maven-repository-metadata-2.0.5.pom
+1/2 KB   2/2 KB            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-repository-metadata/2.0.5/maven-repository-metadata-2.0.5.pom (2 KB at 6.4 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-artifact/2.0.5/maven-artifact-2.0.5.pom
+727/727 B               Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/maven-artifact/2.0.5/maven-artifact-2.0.5.pom (727 B at 3.9 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.jar
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.jar
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.jar
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.jar
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar
+1/21 KB     5/21 KB   8/21 KB   10/21 KB   11/21 KB   12/21 KB   14/21 KB   15/21 KB   1/41 KB   15/21 KB   4/41 KB   15/21 KB   5/41 KB   15/21 KB   7/41 KB   15/21 KB   8/41 KB   15/21 KB   12/41 KB   15/21 KB   1/37 KB   12/41 KB   15/21 KB   4/37 KB   12/41 KB   15/21 KB   5/37 KB   12/41 KB   15/21 KB   7/37 KB   12/41 KB   15/21 KB   8/37 KB   12/41 KB   15/21 KB   8/37 KB   12/41 KB   15/21 KB   10/37 KB   12/41 KB   15/21 KB   11/37 KB   12/41 KB   15/21 KB   12/37 KB   12/41 KB   15/21 KB   12/37 KB   12/41 KB   16/21 KB   12/37 KB   12/41 KB   17/21 KB   12/37 KB   12/41 KB   19/21 KB   12/37 KB   12/41 KB   20/21 KB   12/37 KB   12/41 KB   21/21 KB   12/37 KB   16/41 KB   21/21 KB   12/37 KB   17/41 KB   21/21 KB   12/37 KB   20/41 KB   21/21 KB   12/37 KB   21/41 KB   21/21 KB   12/37 KB   23/41 KB   21/21 KB   12/37 KB   24/41 KB   21/21 KB   12/37 KB   27/41 KB   21/21 KB   12/37 KB   29/41 KB   21/21 KB   12/37 KB   31/41 KB   21/21 KB   12/37 KB   32/41 KB   21/21 KB   12/37 KB   33/41 KB   21/21 KB   12/37 KB   33/41 KB   21/21 KB   1/183 KB   12/37 KB   33/41 KB   21/21 KB   5/183 KB   12/37 KB   33/41 KB   21/21 KB   7/183 KB   12/37 KB   33/41 KB   21/21 KB   9/183 KB   12/37 KB   33/41 KB   21/21 KB   11/183 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   3/227 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   7/227 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   8/227 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   11/227 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   12/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   13/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   15/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   19/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   20/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   21/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   25/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   27/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   28/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   32/37 KB   33/41 KB   21/21 KB   12/183 KB   12/227 KB   33/37 KB   33/41 KB   21/21 KB   12/183 KB                                                            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.jar (21 KB at 101.7 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.jar
+12/227 KB   33/37 KB   35/41 KB   12/183 KB              12/227 KB   33/37 KB   36/41 KB   12/183 KB   12/227 KB   33/37 KB   39/41 KB   12/183 KB   12/227 KB   33/37 KB   41/41 KB   13/183 KB   12/227 KB   33/37 KB   41/41 KB   13/183 KB   12/227 KB   33/37 KB   41/41 KB   16/183 KB   12/227 KB   33/37 KB   41/41 KB   19/183 KB   12/227 KB   33/37 KB   41/41 KB   20/183 KB   12/227 KB   33/37 KB   41/41 KB   21/183 KB   12/227 KB   33/37 KB   41/41 KB   23/183 KB   12/227 KB   33/37 KB   41/41 KB   25/183 KB   12/227 KB   33/37 KB   41/41 KB   27/183 KB   12/227 KB   33/37 KB   41/41 KB   28/183 KB   12/227 KB   33/37 KB   41/41 KB   29/183 KB   16/227 KB   33/37 KB   41/41 KB   29/183 KB   20/227 KB   33/37 KB   41/41 KB   29/183 KB   21/227 KB   33/37 KB   41/41 KB   29/183 KB   23/227 KB   33/37 KB   41/41 KB   29/183 KB   27/227 KB   33/37 KB   41/41 KB   29/183 KB   29/227 KB   33/37 KB   41/41 KB   29/183 KB   29/227 KB   35/37 KB   41/41 KB   29/183 KB   31/227 KB   35/37 KB   41/41 KB   29/183 KB   31/227 KB   36/37 KB   41/41 KB   29/183 KB   31/227 KB   37/37 KB   41/41 KB   29/183 KB   32/227 KB   37/37 KB   41/41 KB   29/183 KB   33/227 KB   37/37 KB   41/41 KB   29/183 KB   33/227 KB   37/37 KB   41/41 KB   32/183 KB   33/227 KB   37/37 KB   41/41 KB   33/183 KB   33/227 KB   37/37 KB   41/41 KB   36/183 KB   33/227 KB   37/37 KB   41/41 KB   39/183 KB   33/227 KB   37/37 KB   41/41 KB   41/183 KB   33/227 KB   37/37 KB   41/41 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   1/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   5/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   7/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   8/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   11/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   15/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   16/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   19/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   22/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   23/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   24/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   25/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   28/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   30/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   31/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   43/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   44/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   45/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   48/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   49/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   50/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   52/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   53/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   57/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   58/183 KB   33/227 KB   37/37 KB   41/41 KB   32/57 KB   60/183 KB                                                            Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.jar (41 KB at 144.8 KB/sec)
+Downloading: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.jar
+33/227 KB   37/37 KB   32/57 KB   61/183 KB              36/227 KB   37/37 KB   32/57 KB   61/183 KB   39/227 KB   37/37 KB   32/57 KB   61/183 KB   40/227 KB   37/37 KB   32/57 KB   61/183 KB   43/227 KB   37/37 KB   32/57 KB   61/183 KB   45/227 KB   37/37 KB   32/57 KB   61/183 KB   47/227 KB   37/37 KB   32/57 KB   61/183 KB   49/227 KB   37/37 KB   32/57 KB   61/183 KB   52/227 KB   37/37 KB   32/57 KB   61/183 KB   54/227 KB   37/37 KB   32/57 KB   61/183 KB   56/227 KB   37/37 KB   32/57 KB   61/183 KB   58/227 KB   37/37 KB   32/57 KB   61/183 KB   61/227 KB   37/37 KB   32/57 KB   61/183 KB   64/227 KB   37/37 KB   32/57 KB   61/183 KB   65/227 KB   37/37 KB   32/57 KB   61/183 KB   65/227 KB   37/37 KB   32/57 KB   62/183 KB   65/227 KB   37/37 KB   32/57 KB   64/183 KB                                                 Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar (37 KB at 126.5 KB/sec)
+65/227 KB   32/57 KB   65/183 KB              65/227 KB   32/57 KB   68/183 KB   65/227 KB   32/57 KB   69/183 KB   65/227 KB   32/57 KB   72/183 KB   65/227 KB   33/57 KB   72/183 KB   65/227 KB   35/57 KB   72/183 KB   65/227 KB   36/57 KB   72/183 KB   65/227 KB   39/57 KB   72/183 KB   65/227 KB   40/57 KB   72/183 KB   65/227 KB   41/57 KB   72/183 KB   65/227 KB   43/57 KB   72/183 KB   65/227 KB   44/57 KB   72/183 KB   65/227 KB   45/57 KB   72/183 KB   65/227 KB   48/57 KB   72/183 KB   65/227 KB   49/57 KB   72/183 KB   65/227 KB   51/57 KB   72/183 KB   65/227 KB   52/57 KB   72/183 KB   65/227 KB   53/57 KB   72/183 KB   65/227 KB   55/57 KB   73/183 KB   65/227 KB   55/57 KB   73/183 KB   65/227 KB   55/57 KB   74/183 KB   65/227 KB   56/57 KB   74/183 KB   65/227 KB   56/57 KB   76/183 KB   65/227 KB   57/57 KB   76/183 KB   65/227 KB   57/57 KB   77/183 KB   65/227 KB   57/57 KB   78/183 KB   65/227 KB   57/57 KB   81/183 KB   65/227 KB   57/57 KB   82/183 KB   65/227 KB   57/57 KB   84/183 KB   65/227 KB   57/57 KB   85/183 KB   65/227 KB   57/57 KB   88/183 KB   65/227 KB   57/57 KB   89/183 KB   65/227 KB   57/57 KB   90/183 KB   65/227 KB   57/57 KB   92/183 KB   65/227 KB   57/57 KB   93/183 KB   66/227 KB   57/57 KB   93/183 KB   69/227 KB   57/57 KB   93/183 KB   72/227 KB   57/57 KB   93/183 KB   73/227 KB   57/57 KB   93/183 KB   74/227 KB   57/57 KB   93/183 KB   76/227 KB   57/57 KB   93/183 KB   77/227 KB   57/57 KB   93/183 KB   78/227 KB   57/57 KB   93/183 KB   81/227 KB   57/57 KB   93/183 KB   84/227 KB   57/57 KB   93/183 KB   85/227 KB   57/57 KB   93/183 KB   86/227 KB   57/57 KB   93/183 KB   89/227 KB   57/57 KB   93/183 KB   90/227 KB   57/57 KB   93/183 KB   93/227 KB   57/57 KB   93/183 KB   94/227 KB   57/57 KB   93/183 KB   96/227 KB   57/57 KB   93/183 KB   97/227 KB   57/57 KB   93/183 KB   97/227 KB   57/57 KB   95/183 KB   97/227 KB   1/27 KB   57/57 KB   95/183 KB   97/227 KB   4/27 KB   57/57 KB   95/183 KB   97/227 KB   5/27 KB   57/57 KB   95/183 KB   97/227 KB   7/27 KB   57/57 KB   95/183 KB   97/227 KB   8/27 KB   57/57 KB   95/183 KB   97/227 KB   10/27 KB   57/57 KB   95/183 KB   97/227 KB   12/27 KB   57/57 KB   95/183 KB   97/227 KB   12/27 KB   57/57 KB   95/183 KB   97/227 KB   14/27 KB   57/57 KB   95/183 KB   97/227 KB   15/27 KB   57/57 KB   95/183 KB   97/227 KB   17/27 KB   57/57 KB   95/183 KB   97/227 KB   19/27 KB   57/57 KB   95/183 KB   97/227 KB   20/27 KB   57/57 KB   95/183 KB   97/227 KB   23/27 KB   57/57 KB   95/183 KB   97/227 KB   25/27 KB   57/57 KB   95/183 KB   97/227 KB   27/27 KB   57/57 KB   97/183 KB   97/227 KB   27/27 KB   57/57 KB   97/183 KB   97/227 KB   27/27 KB   57/57 KB   98/183 KB   97/227 KB   27/27 KB   57/57 KB   99/183 KB   97/227 KB   27/27 KB   57/57 KB   101/183 KB   97/227 KB   27/27 KB   57/57 KB   102/183 KB   97/227 KB   27/27 KB   57/57 KB   103/183 KB   97/227 KB   27/27 KB   57/57 KB   105/183 KB   97/227 KB   27/27 KB   57/57 KB   106/183 KB   97/227 KB   27/27 KB   57/57 KB   107/183 KB   97/227 KB   27/27 KB   57/57 KB   110/183 KB   97/227 KB   27/27 KB   57/57 KB   113/183 KB   97/227 KB   27/27 KB   57/57 KB   114/183 KB   97/227 KB   27/27 KB   57/57 KB   115/183 KB   97/227 KB   27/27 KB   57/57 KB   117/183 KB   97/227 KB   27/27 KB   57/57 KB   118/183 KB   97/227 KB   27/27 KB   57/57 KB   119/183 KB   97/227 KB   27/27 KB   57/57 KB   121/183 KB   97/227 KB   27/27 KB   57/57 KB   122/183 KB   97/227 KB   27/27 KB   57/57 KB   125/183 KB   99/227 KB   27/27 KB   57/57 KB   125/183 KB   101/227 KB   27/27 KB   57/57 KB   125/183 KB   102/227 KB   27/27 KB   57/57 KB   125/183 KB   105/227 KB   27/27 KB   57/57 KB   125/183 KB   109/227 KB   27/27 KB   57/57 KB   125/183 KB   111/227 KB   27/27 KB   57/57 KB   125/183 KB   115/227 KB   27/27 KB   57/57 KB   125/183 KB   118/227 KB   27/27 KB   57/57 KB   125/183 KB   122/227 KB   27/27 KB   57/57 KB   125/183 KB   123/227 KB   27/27 KB   57/57 KB   125/183 KB   125/227 KB   27/27 KB   57/57 KB   125/183 KB                                                   Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.jar (57 KB at 143.7 KB/sec)
+127/227 KB   27/27 KB   125/183 KB              129/227 KB   27/27 KB   125/183 KB   129/227 KB   27/27 KB   126/183 KB   129/227 KB   27/27 KB   127/183 KB   129/227 KB   27/27 KB   129/183 KB   131/227 KB   27/27 KB   129/183 KB   131/227 KB   27/27 KB   131/183 KB   131/227 KB   27/27 KB   133/183 KB   131/227 KB   27/27 KB   134/183 KB   131/227 KB   27/27 KB   137/183 KB   131/227 KB   27/27 KB   138/183 KB   131/227 KB   27/27 KB   139/183 KB   131/227 KB   27/27 KB   143/183 KB   131/227 KB   27/27 KB   147/183 KB   131/227 KB   27/27 KB   150/183 KB   131/227 KB   27/27 KB   151/183 KB   131/227 KB   27/27 KB   152/183 KB   131/227 KB   27/27 KB   154/183 KB   131/227 KB   27/27 KB   155/183 KB   131/227 KB   27/27 KB   156/183 KB   131/227 KB   27/27 KB   158/183 KB   131/227 KB   27/27 KB   159/183 KB   131/227 KB   27/27 KB   162/183 KB   133/227 KB   27/27 KB   162/183 KB   134/227 KB   27/27 KB   162/183 KB   135/227 KB   27/27 KB   162/183 KB   137/227 KB   27/27 KB   162/183 KB                                        Downloaded: http://maven.qima-inc.com/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.jar (27 KB at 63.5 KB/sec)
+139/227 KB   162/183 KB              141/227 KB   162/183 KB   142/227 KB   162/183 KB   144/227 KB   162/183 KB   147/227 KB   162/183 KB   148/227 KB   162/183 KB   150/227 KB   162/183 KB   151/227 KB   162/183 KB   154/227 KB   162/183 KB   156/227 KB   162/183 KB   158/227 KB   162/183 KB   159/227 KB   162/183 KB   160/227 KB   162/183 KB   160/227 KB   164/183 KB   163/227 KB   164/183 KB   164/227 KB   164/183 KB   166/227 KB   164/183 KB   168/227 KB   164/183 KB   168/227 KB   166/183 KB   168/227 KB   167/183 KB   168/227 KB   168/183 KB   168/227 KB   170/183 KB   168/227 KB   171/183 KB   168/227 KB   174/183 KB   168/227 KB   175/183 KB   168/227 KB   176/183 KB   168/227 KB   178/183 KB   168/227 KB   179/183 KB   168/227 KB   180/183 KB   168/227 KB   183/183 KB   170/227 KB   183/183 KB   171/227 KB   183/183 KB   172/227 KB   183/183 KB   175/227 KB   183/183 KB   179/227 KB   183/183 KB   180/227 KB   183/183 KB   182/227 KB   183/183 KB   183/227 KB   183/183 KB   184/227 KB   183/183 KB   185/227 KB   183/183 KB   187/227 KB   183/183 KB   189/227 KB   183/183 KB   191/227 KB   183/183 KB   195/227 KB   183/183 KB   196/227 KB   183/183 KB   199/227 KB   183/183 KB   203/227 KB   183/183 KB   204/227 KB   183/183 KB   205/227 KB   183/183 KB   207/227 KB   183/183 KB   208/227 KB   183/183 KB   212/227 KB   183/183 KB   213/227 KB   183/183 KB   215/227 KB   183/183 KB   216/227 KB   183/183 KB   217/227 KB   183/183 KB   220/227 KB   183/183 KB   224/227 KB   183/183 KB   225/227 KB   183/183 KB                             Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.jar (183 KB at 342.9 KB/sec)
+227/227 KB                             Downloaded: http://maven.qima-inc.com/content/groups/public/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.jar (227 KB at 350.6 KB/sec)
+[INFO] com.youzan.pay:unified.cashier:pom:1.0.0-SNAPSHOT
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building common-utils 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.common-utils ---
+[INFO] com.youzan.pay:unified.cashier.common-utils:jar:1.0.0-SNAPSHOT
+[INFO] +- com.youzan.platform:bootstrap:jar:3.0.4-RELEASE:compile
+[INFO] |  +- com.alibaba:dubbo:jar:3.0.4-RELEASE:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.7.0.Final:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.19.0-GA:compile
+[INFO] |  |  +- com.youzan:lightning-sdk:jar:0.1.1-SNAPSHOT:compile
+[INFO] |  |  +- org.apache.commons:commons-lang3:jar:3.3.2:compile
+[INFO] |  |  +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpasyncclient:jar:4.0.2:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore-nio:jar:4.3.2:compile
+[INFO] |  |  +- com.google.guava:guava:jar:14.0.1:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.3.1:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.alibaba:fastjson:jar:1.2.21:compile
+[INFO] |  +- com.youzan.platform:haunt-client:jar:3.0.2-RELEASE:compile
+[INFO] |  +- com.youzan.platform:commons-util:jar:2.0.0-SNAPSHOT:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils-core:jar:1.8.3:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.12:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.5.2:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+[INFO] |  +- com.github.sgroschupf:zkclient:jar:0.1:compile
+[INFO] |  |  \- org.apache.zookeeper:zookeeper:jar:3.3.3:compile
+[INFO] |  |     \- jline:jline:jar:0.9.94:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO] |  +- org.slf4j:jcl-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- org.slf4j:log4j-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] |  +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] |  +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.4:compile
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jaxrs:jar:3.0.7.youzan-SNAPSHOT:compile
+[INFO] |  |  +- org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  +- javax.activation:activation:jar:1.1:compile
+[INFO] |  |  +- commons-io:commons-io:jar:2.1:compile
+[INFO] |  |  \- net.jcip:jcip-annotations:jar:1.0:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-client:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:jaxrs-api:jar:3.0.7.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.0.0.GA:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-netty:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jackson-provider:jar:3.0.7.Final:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.12:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-xc:jar:1.9.12:compile
+[INFO] |  \- org.apache.thrift:libthrift:jar:0.9.2:compile
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building core-model 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.core-model ---
+[INFO] com.youzan.pay:unified.cashier.core-model:jar:1.0.0-SNAPSHOT
+[INFO] +- com.youzan:common-model:jar:1.0.1-SNAPSHOT:compile
+[INFO] +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dal 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.dal ---
+[INFO] com.youzan.pay:unified.cashier.dal:jar:1.0.0-SNAPSHOT
+[INFO] +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+[INFO] |  \- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+[INFO] |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:3.2.13.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:3.2.13.RELEASE:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.8:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.2:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.30:compile
+[INFO] +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.3.2:compile
+[INFO] +- com.youzan.nova.framework:framework-ibatis:jar:1.0.1-RELEASE:compile
+[INFO] |  \- com.youzan:youzan-trace-client:jar:1.0:compile
+[INFO] |     \- com.dianping.cat:cat-client:jar:1.3.6:compile
+[INFO] |        +- org.unidal.framework:foundation-service:jar:2.5.0:compile
+[INFO] |        |  +- org.codehaus.plexus:plexus-container-default:jar:1.6:compile
+[INFO] |        |  |  +- org.codehaus.plexus:plexus-classworlds:jar:2.5.1:compile
+[INFO] |        |  |  \- org.apache.xbean:xbean-reflect:jar:3.7:compile
+[INFO] |        |  +- com.google.guava:guava:jar:19.0:compile
+[INFO] |        |  +- org.codehaus.plexus:plexus-utils:jar:3.0.24:compile
+[INFO] |        |  \- org.aspectj:aspectjrt:jar:1.5.4:compile
+[INFO] |        +- io.netty:netty-all:jar:4.0.24.Final:compile
+[INFO] |        \- com.google.code.gson:gson:jar:2.3.1:compile
+[INFO] +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO] +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- com.youzan.nova.framework:framework-redis:jar:1.0.0-RELEASE:compile
+[INFO] |  \- redis.clients:jedis:jar:2.8.1:compile
+[INFO] |     \- org.apache.commons:commons-pool2:jar:2.4.2:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.21:compile
+[INFO] +- org.springframework:spring-test:jar:3.2.13.RELEASE:test
+[INFO] +- org.unitils:unitils-core:jar:3.4.2:test
+[INFO] |  +- commons-lang:commons-lang:jar:2.6:test
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:test
+[INFO] |  \- ognl:ognl:jar:2.6.9:test
+[INFO] +- org.unitils:unitils-database:jar:3.4.2:test
+[INFO] |  \- commons-dbcp:commons-dbcp:jar:1.4:test
+[INFO] |     \- commons-pool:commons-pool:jar:1.5.4:test
+[INFO] +- org.unitils:unitils-dbmaintainer:jar:3.4.2:test
+[INFO] |  +- org.hibernate:hibernate:jar:3.2.5.ga:test
+[INFO] |  |  +- net.sf.ehcache:ehcache:jar:1.2.3:test
+[INFO] |  |  +- asm:asm-attrs:jar:1.5.3:test
+[INFO] |  |  +- antlr:antlr:jar:2.7.6:test
+[INFO] |  |  \- asm:asm:jar:1.5.3:test
+[INFO] |  \- org.dbunit:dbunit:jar:2.4.9:test
+[INFO] +- org.unitils:unitils-dbunit:jar:3.4.2:test
+[INFO] |  \- xmlunit:xmlunit:jar:1.2:test
+[INFO] +- org.unitils:unitils-easymock:jar:3.4.2:test
+[INFO] |  +- org.easymock:easymock:jar:2.3:test
+[INFO] |  +- cglib:cglib:jar:2.2:test
+[INFO] |  \- org.easymock:easymockclassextension:jar:2.3:test
+[INFO] |     \- cglib:cglib-nodep:jar:2.1_3:test
+[INFO] +- org.unitils:unitils-mock:jar:3.4.2:test
+[INFO] +- org.unitils:unitils-orm:jar:3.4.2:test
+[INFO] |  \- javax.persistence:persistence-api:jar:1.0:test
+[INFO] +- org.unitils:unitils-spring:jar:3.4.2:test
+[INFO] +- com.h2database:h2:jar:1.4.192:test
+[INFO] +- org.kubek2k:springockito-annotations:jar:1.0.9:test
+[INFO] |  \- org.mockito:mockito-all:jar:1.9.5:test
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib:jar:1.0.3:compile
+[INFO] |  \- org.jetbrains.kotlin:kotlin-runtime:jar:1.0.3:compile
+[INFO] +- org.powermock:powermock-module-junit4:jar:1.6.6:compile
+[INFO] |  \- org.powermock:powermock-module-junit4-common:jar:1.6.6:compile
+[INFO] |     +- org.powermock:powermock-core:jar:1.6.6:compile
+[INFO] |     |  \- org.javassist:javassist:jar:3.19.0-GA:compile
+[INFO] |     \- org.powermock:powermock-reflect:jar:1.6.6:compile
+[INFO] +- org.powermock:powermock-api-mockito:jar:1.6.6:compile
+[INFO] |  +- org.mockito:mockito-core:jar:1.10.19:compile
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.1:compile
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:1.3:compile
+[INFO] |  \- org.powermock:powermock-api-mockito-common:jar:1.6.6:compile
+[INFO] |     \- org.powermock:powermock-api-support:jar:1.6.6:compile
+[INFO] +- org.unitils:unitils-inject:jar:3.4.2:test
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building core-service 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.core-model/1.0.0-SNAPSHOT/maven-metadata.xml
+             Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.common-utils/1.0.0-SNAPSHOT/maven-metadata.xml
+             Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.dal/1.0.0-SNAPSHOT/maven-metadata.xml
+             [INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.core-service ---
+[INFO] com.youzan.pay:unified.cashier.core-service:jar:1.0.0-SNAPSHOT
+[INFO] +- com.youzan.pay:unified.cashier.core-model:jar:1.0.0-SNAPSHOT:compile
+[INFO] |  \- com.youzan:common-model:jar:1.0.1-SNAPSHOT:compile
+[INFO] +- com.youzan.pay:unified.cashier.common-utils:jar:1.0.0-SNAPSHOT:compile
+[INFO] +- com.youzan.pay:unified.cashier.dal:jar:1.0.0-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.8:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.2:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.30:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.3.2:compile
+[INFO] |  +- com.youzan.nova.framework:framework-ibatis:jar:1.0.1-RELEASE:compile
+[INFO] |  |  \- com.youzan:youzan-trace-client:jar:1.0:compile
+[INFO] |  |     \- com.dianping.cat:cat-client:jar:1.3.6:compile
+[INFO] |  |        +- org.unidal.framework:foundation-service:jar:2.5.0:compile
+[INFO] |  |        |  +- org.codehaus.plexus:plexus-container-default:jar:1.6:compile
+[INFO] |  |        |  |  +- org.codehaus.plexus:plexus-classworlds:jar:2.5.1:compile
+[INFO] |  |        |  |  \- org.apache.xbean:xbean-reflect:jar:3.7:compile
+[INFO] |  |        |  +- org.codehaus.plexus:plexus-utils:jar:3.0.24:compile
+[INFO] |  |        |  \- org.aspectj:aspectjrt:jar:1.5.4:compile
+[INFO] |  |        \- io.netty:netty-all:jar:4.0.24.Final:compile
+[INFO] |  +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO] |  +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] |  +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- com.youzan.nova.framework:framework-redis:jar:1.0.0-RELEASE:compile
+[INFO] |  |  \- redis.clients:jedis:jar:2.8.1:compile
+[INFO] |  |     \- org.apache.commons:commons-pool2:jar:2.4.2:compile
+[INFO] |  +- com.alibaba:fastjson:jar:1.2.21:compile
+[INFO] |  \- org.jetbrains.kotlin:kotlin-stdlib:jar:1.0.3:compile
+[INFO] |     \- org.jetbrains.kotlin:kotlin-runtime:jar:1.0.3:compile
+[INFO] +- org.springframework:spring-test:jar:3.2.13.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+[INFO] +- org.powermock:powermock-module-junit4:jar:1.6.6:compile
+[INFO] |  \- org.powermock:powermock-module-junit4-common:jar:1.6.6:compile
+[INFO] |     +- org.powermock:powermock-core:jar:1.6.6:compile
+[INFO] |     \- org.powermock:powermock-reflect:jar:1.6.6:compile
+[INFO] +- org.powermock:powermock-api-mockito:jar:1.6.6:compile
+[INFO] |  +- org.mockito:mockito-core:jar:1.10.19:compile
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.1:compile
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:1.3:compile
+[INFO] |  \- org.powermock:powermock-api-mockito-common:jar:1.6.6:compile
+[INFO] |     \- org.powermock:powermock-api-support:jar:1.6.6:compile
+[INFO] +- com.youzan.platform:bootstrap:jar:3.0.4-RELEASE:compile
+[INFO] |  +- com.alibaba:dubbo:jar:3.0.4-RELEASE:compile
+[INFO] |  |  +- io.netty:netty:jar:3.7.0.Final:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.19.0-GA:compile
+[INFO] |  |  +- com.youzan:lightning-sdk:jar:0.1.1-SNAPSHOT:compile
+[INFO] |  |  +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpasyncclient:jar:4.0.2:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore-nio:jar:4.3.2:compile
+[INFO] |  |  +- com.google.guava:guava:jar:14.0.1:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.3.1:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  \- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- com.youzan.platform:haunt-client:jar:3.0.2-RELEASE:compile
+[INFO] |  +- com.youzan.platform:commons-util:jar:2.0.0-SNAPSHOT:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils-core:jar:1.8.3:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.12:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.5.2:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+[INFO] |  +- com.github.sgroschupf:zkclient:jar:0.1:compile
+[INFO] |  |  \- org.apache.zookeeper:zookeeper:jar:3.3.3:compile
+[INFO] |  |     \- jline:jline:jar:0.9.94:compile
+[INFO] |  +- org.slf4j:jcl-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- org.slf4j:log4j-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- org.springframework:spring-orm:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.4:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jaxrs:jar:3.0.7.youzan-SNAPSHOT:compile
+[INFO] |  |  +- org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  +- javax.activation:activation:jar:1.1:compile
+[INFO] |  |  +- commons-io:commons-io:jar:2.1:compile
+[INFO] |  |  \- net.jcip:jcip-annotations:jar:1.0:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-client:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:jaxrs-api:jar:3.0.7.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.0.0.GA:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-netty:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jackson-provider:jar:3.0.7.Final:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.12:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-xc:jar:1.9.12:compile
+[INFO] |  \- org.apache.thrift:libthrift:jar:0.9.2:compile
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building api 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.api ---
+[INFO] com.youzan.pay:unified.cashier.api:jar:1.0.0-SNAPSHOT
+[INFO] +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:4.3.2.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.0.0.GA:compile
+[INFO] |  \- org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building intergration 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[WARNING] The POM for com.youzan.pay:assetcenter.api:jar:0.0.7-20170111.123218-6 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ unified.cashier.intergration ---
+[INFO] com.youzan.pay:unified.cashier.intergration:jar:1.0.0-SNAPSHOT
+[INFO] +- com.youzan.platform:bootstrap:jar:3.0.4-RELEASE:compile
+[INFO] |  +- com.alibaba:dubbo:jar:3.0.4-RELEASE:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.7.0.Final:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.19.0-GA:compile
+[INFO] |  |  +- com.youzan:lightning-sdk:jar:0.1.1-SNAPSHOT:compile
+[INFO] |  |  +- org.apache.commons:commons-lang3:jar:3.3.2:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpasyncclient:jar:4.0.2:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore-nio:jar:4.3.2:compile
+[INFO] |  |  +- com.google.guava:guava:jar:14.0.1:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.3.1:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.alibaba:fastjson:jar:1.2.21:compile
+[INFO] |  +- com.youzan.platform:haunt-client:jar:3.0.2-RELEASE:compile
+[INFO] |  +- com.youzan.platform:commons-util:jar:2.0.0-SNAPSHOT:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils-core:jar:1.8.3:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.12:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.5.2:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+[INFO] |  +- com.github.sgroschupf:zkclient:jar:0.1:compile
+[INFO] |  |  \- org.apache.zookeeper:zookeeper:jar:3.3.3:compile
+[INFO] |  |     \- jline:jline:jar:0.9.94:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO] |  +- org.slf4j:jcl-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- org.slf4j:log4j-over-slf4j:jar:1.7.7:compile
+[INFO] |  +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] |  +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] |  +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:3.2.13.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aspects:jar:3.2.13.RELEASE:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.7.4:compile
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |  \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jaxrs:jar:3.0.7.youzan-SNAPSHOT:compile
+[INFO] |  |  +- org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:jar:1.0.1.Final:compile
+[INFO] |  |  +- javax.activation:activation:jar:1.1:compile
+[INFO] |  |  +- commons-io:commons-io:jar:2.1:compile
+[INFO] |  |  \- net.jcip:jcip-annotations:jar:1.0:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-client:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:jaxrs-api:jar:3.0.7.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.0.0.GA:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-netty:jar:3.0.7.Final:compile
+[INFO] |  +- org.jboss.resteasy:resteasy-jackson-provider:jar:3.0.7.Final:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.12:compile
+[INFO] |  |  \- org.codehaus.jackson:jackson-xc:jar:1.9.12:compile
+[INFO] |  \- org.apache.thrift:libthrift:jar:0.9.2:compile
+[INFO] +- com.youzan.pay:assetcenter.api:jar:0.0.7-SNAPSHOT:compile
+[INFO] +- com.youzan.pay.core:core-utils:jar:1.0.0-SNAPSHOT:compile
+[INFO] |  +- org.projectlombok:lombok:jar:1.16.2:provided
+[INFO] |  +- org.hibernate:hibernate-validator:jar:4.3.2.Final:compile
+[INFO] |  |  \- org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building api-impl 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.api/1.0.0-SNAPSHOT/maven-metadata.xml
+             Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.core-service/1.0.0-SNAPSHOT/maven-metadata.xml
+             Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.intergration/1.0.0-SNAPSHOT/maven-metadata.xml
+             Downloading: http://maven.qima-inc.com/content/groups/public/com/youzan/pay/unified.cashier.intergration/1.0.0-SNAPSHOT/unified.cashier.intergration-1.0.0-SNAPSHOT.jar
+             [INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] unified.cashier .................................... SUCCESS [  5.634 s]
+[INFO] common-utils ....................................... SUCCESS [  0.301 s]
+[INFO] core-model ......................................... SUCCESS [  0.011 s]
+[INFO] dal ................................................ SUCCESS [  0.257 s]
+[INFO] core-service ....................................... SUCCESS [  2.047 s]
+[INFO] api ................................................ SUCCESS [  0.026 s]
+[INFO] intergration ....................................... SUCCESS [  0.060 s]
+[INFO] api-impl ........................................... FAILURE [  2.115 s]
+[INFO] deploy ............................................. SKIPPED
+[INFO] test ............................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.179 s
+[INFO] Finished at: 2017-01-17T11:58:03+08:00
+[INFO] Final Memory: 23M/284M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project unified.cashier.api-impl: Could not resolve dependencies for project com.youzan.pay:unified.cashier.api-impl:jar:1.0.0-SNAPSHOT: Could not find artifact com.youzan.pay:unified.cashier.intergration:jar:1.0.0-SNAPSHOT in public (http://maven.qima-inc.com/content/groups/public/) -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :unified.cashier.api-impl

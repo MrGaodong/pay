@@ -1,0 +1,10 @@
+com/youzan/pay/unified/cashier/core/utils/ObjectForTest.class
+com/youzan/pay/unified/cashier/core/utils/common/MyCollectorTest$TypeA.class
+com/youzan/pay/unified/cashier/core/utils/common/MyCollectorTest.class
+com/youzan/pay/unified/cashier/core/utils/Object1.class
+com/youzan/pay/unified/cashier/core/utils/TestQRCodeGenerator.class
+com/youzan/pay/unified/cashier/core/utils/common/StringNumProcessorTest.class
+com/youzan/pay/unified/cashier/core/utils/common/BankIconConfigTest.class
+com/youzan/pay/unified/cashier/core/utils/TestSignObject.class
+com/youzan/pay/unified/cashier/core/utils/common/DataMixProcessorTest.class
+com/youzan/pay/unified/cashier/core/utils/TestSerializerUtils.class

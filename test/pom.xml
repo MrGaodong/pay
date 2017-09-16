@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>unified.cashier</artifactId>
+        <groupId>com.youzan.pay</groupId>
+        <version>0.0.1-20170821-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.youzan.pay</groupId>
+    <artifactId>unified.cashier.test</artifactId>
+    <version>0.0.1-20170821-SNAPSHOT</version>
+
+    <name>test</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>3.2.3.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- 有赞平台域依赖开始 -->
+        <dependency>
+            <groupId>com.youzan.platform</groupId>
+            <artifactId>bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>assetcenter.api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.api-impl</artifactId>
+            <version>0.0.1-20170821-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay</groupId>
+            <artifactId>unified.cashier.intergration</artifactId>
+            <version>0.0.1-20170821-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.youzan.pay.core</groupId>
+            <artifactId>core-utils</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

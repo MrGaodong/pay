@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Youzan.com Inc.
+  ~ Copyright (c) 2012-2017 All Rights Reserved.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-autowire="byName">
+
+    <bean class="com.youzan.platform.bootstrap.container.NovaContainer"/>
+    <bean id="beanFactory" class="com.youzan.platform.bootstrap.common.BeanFactory"/>
+    <import resource="classpath:beans/spring-*.xml"/>
+    <import resource="classpath:integration/spring-*.xml"/>
+
+
+</beans>

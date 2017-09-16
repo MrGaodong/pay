@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+	   http://code.alibabatech.com/schema/dubbo
+	   http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:component-scan base-package="com.youzan.pay.unified.cashier.intergration.client.impl"/>
+
+    <dubbo:reference interface="com.youzan.pay.assetcenter.api.UnifiedPayService"
+                     id="unifiedPayService"
+                     protocol="dubbo"
+                     timeout="2000"
+                     registry="haunt"/>
+
+    <dubbo:reference id="signKeyService"
+                     interface="com.youzan.pay.customer.api.SignKeyService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="true" registry="haunt"/>
+
+    <dubbo:reference id="merchantConfigService"
+                     interface="com.youzan.pay.customer.api.MerchantConfigService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="true" registry="haunt"/>
+
+    <dubbo:reference id="unifiedOrderService"
+                     interface="com.youzan.pay.assetcenter.api.UnifiedOrderService"
+                     retries="0"
+                     timeout="5000" protocol="dubbo" check="true" registry="haunt"/>
+
+</beans>

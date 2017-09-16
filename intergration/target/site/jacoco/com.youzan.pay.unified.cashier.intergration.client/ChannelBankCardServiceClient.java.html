@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChannelBankCardServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">ChannelBankCardServiceClient.java</span></div><h1>ChannelBankCardServiceClient.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.pay.core.utils.log.LogUtils;
+import com.youzan.pay.fundchannel.open.api.BankCardService;
+import com.youzan.pay.fundchannel.open.model.BaseResponse;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankBindCheckRequest;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankBindCheckResult;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankCardCheckRequest;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankCardCheckResult;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankPayConfirmRequest;
+import com.youzan.pay.fundchannel.open.model.bankcard.BankPayConfirmResult;
+import com.youzan.pay.fundchannel.open.model.bankcard.SendSmsRequest;
+import com.youzan.pay.fundchannel.open.model.bankcard.SendSmsResult;
+import com.youzan.pay.unified.cashier.core.utils.exception.CardBaseException;
+import com.youzan.pay.unified.cashier.core.utils.resultcode.errorcode.CardErrorCode;
+import com.youzan.pay.unified.cashier.intergration.common.CashierHandleTemplate;
+import com.youzan.pay.unified.cashier.intergration.common.CashierProcessCallBack;
+
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
+
+import static com.youzan.pay.fundchannel.open.model.bankcard.BankBindCheckResult.Result;
+
+/**
+ * @author tao.ke Date: 2017/6/12 Time: 上午10:04
+ */
+<span class="fc" id="L32">@Slf4j</span>
+@Component
+<span class="fc" id="L34">public class ChannelBankCardServiceClient {</span>
+
+  @Resource
+  private BankCardService bankCardService; // 渠道对外开放的银行卡服务
+
+  /**
+   * 调用银行卡校验接口，获取银行卡基本信息
+   */
+  public BankCardCheckResult checkBankCard(BankCardCheckRequest request) {
+
+<span class="nc" id="L44">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;BankCardCheckResult&gt;() {</span>
+      @Override
+      public BankCardCheckResult process() {
+
+<span class="nc" id="L48">        BaseResponse&lt;BankCardCheckResult&gt; response = bankCardService.checkCard(request);</span>
+
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if (response == null) {</span>
+<span class="nc" id="L51">          throw new CardBaseException(CardErrorCode.CHANNEL_CARD_CHECK, &quot;&quot;);</span>
+        }
+<span class="nc bnc" id="L53" title="All 4 branches missed.">        if (response.isSuccess() &amp;&amp; response.getBizResult() != null) {</span>
+<span class="nc" id="L54">          return response.getBizResult();</span>
+        } else {
+<span class="nc" id="L56">          LogUtils.warn(log,&quot;调用渠道获取银行卡校验信息返回,response:{}&quot;,response);</span>
+<span class="nc" id="L57">          throw new CardBaseException(CardErrorCode.CHANNEL_CARD_CHECK, response.getErrorMsg());</span>
+        }
+      }
+
+      @Override
+      public void succ(BankCardCheckResult result, long execTime) {
+<span class="nc" id="L63">        LogUtils.info(log, &quot;调用渠道获取银行卡校验信息成功，cost:{},result:{}&quot;, execTime, result);</span>
+<span class="nc" id="L64">      }</span>
+
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L69">        LogUtils.error(e, log, &quot;调用渠道获取银行卡校验信息失败.&quot;);</span>
+<span class="nc" id="L70">        throw new CardBaseException(CardErrorCode.CHANNEL_CARD_CHECK, &quot;&quot;);</span>
+      }
+
+    });
+
+  }
+
+  /**
+   * 请求渠道发送短信验证码
+   */
+  public SendSmsResult sendConfirmSms(SendSmsRequest request) {
+
+<span class="nc" id="L82">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;SendSmsResult&gt;() {</span>
+      @Override
+      public SendSmsResult process() {
+
+<span class="nc" id="L86">        BaseResponse&lt;SendSmsResult&gt; response = bankCardService.sendSms(request);</span>
+
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (response == null) {</span>
+
+<span class="nc" id="L90">          throw new CardBaseException(CardErrorCode.CHANNEL_SEND_SMS, &quot;&quot;);</span>
+        }
+
+<span class="nc bnc" id="L93" title="All 4 branches missed.">        if (response.isSuccess() &amp;&amp; response.getBizResult() != null) {</span>
+<span class="nc" id="L94">          return response.getBizResult();</span>
+        } else {
+<span class="nc" id="L96">          throw new CardBaseException(CardErrorCode.CHANNEL_SEND_SMS, response.getErrorMsg());</span>
+        }
+
+      }
+
+      @Override
+      public void succ(SendSmsResult result, long execTime) {
+<span class="nc" id="L103">        LogUtils.info(log, &quot;调用渠道请求发送短信验证码成功，cost:{},result:{},request:{}&quot;, execTime, result,request);</span>
+<span class="nc" id="L104">      }</span>
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L108">        LogUtils.error(e, log, &quot;调用渠道请求发送短信验证码失败，请求参数:{}&quot;, request);</span>
+<span class="nc" id="L109">        throw new CardBaseException(CardErrorCode.CHANNEL_SEND_SMS, &quot;&quot;);</span>
+      }
+
+    });
+
+  }
+
+  /**
+   * 完成最后支付确认过程的请求
+   */
+  public BankPayConfirmResult payConfirm(BankPayConfirmRequest request) {
+
+<span class="nc" id="L121">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;BankPayConfirmResult&gt;() {</span>
+      @Override
+      public BankPayConfirmResult process() {
+
+<span class="nc" id="L125">        BaseResponse&lt;BankPayConfirmResult&gt; response = bankCardService.payConfirm(request);</span>
+
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (response == null) {</span>
+<span class="nc" id="L128">          throw new CardBaseException(CardErrorCode.CHANNEL_CONFIRM_PAY, &quot;&quot;);</span>
+        }
+
+<span class="nc bnc" id="L131" title="All 4 branches missed.">        if (response.isSuccess() &amp;&amp; response.getBizResult() != null) {</span>
+<span class="nc" id="L132">          return response.getBizResult();</span>
+        } else {
+<span class="nc" id="L134">          throw new CardBaseException(CardErrorCode.CHANNEL_CONFIRM_PAY, response.getErrorMsg());</span>
+        }
+      }
+
+      @Override
+      public void succ(BankPayConfirmResult result, long execTime) {
+<span class="nc" id="L140">        LogUtils.info(log, &quot;调用渠道完成确认支付成功，cost:{},result:{},request:{}&quot;, execTime, result,request);</span>
+<span class="nc" id="L141">      }</span>
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L145">        LogUtils.error(e, log, &quot;调用渠道完成确认支付失败，请求参数:{}&quot;, request);</span>
+<span class="nc" id="L146">        throw new CardBaseException(CardErrorCode.CHANNEL_CONFIRM_PAY, &quot;&quot;);</span>
+      }
+
+    });
+  }
+
+  /**
+   * 校验绑卡id的合法性
+   */
+  public List&lt;Result&gt; checkBindIds(BankBindCheckRequest request) {
+
+<span class="nc" id="L157">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;List&lt;Result&gt;&gt;() {</span>
+      @Override
+      public List&lt;Result&gt; process() {
+
+<span class="nc" id="L161">        BaseResponse&lt;BankBindCheckResult&gt; checkResult = bankCardService.checkBankBinding(request);</span>
+
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        if (checkResult == null) {</span>
+<span class="nc" id="L164">          throw new CardBaseException(CardErrorCode.CHANNEL_CHECK_BIND, &quot;&quot;);</span>
+        }
+
+<span class="nc bnc" id="L167" title="All 4 branches missed.">        if (checkResult.isSuccess() &amp;&amp; checkResult.getBizResult() != null</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">            &amp;&amp; checkResult.getBizResult().getResult() != null) {</span>
+<span class="nc" id="L169">          return checkResult.getBizResult().getResult();</span>
+        } else {
+<span class="nc" id="L171">          throw new CardBaseException(CardErrorCode.CHANNEL_CHECK_BIND, checkResult.getErrorMsg());</span>
+        }
+      }
+
+      @Override
+      public void succ(List&lt;Result&gt; result, long execTime) {
+<span class="nc" id="L177">        LogUtils.info(log, &quot;调用渠道检查绑卡ID有效性成功，cost:{},result:{},request:{}&quot;, execTime, result,request);</span>
+<span class="nc" id="L178">      }</span>
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L182">        LogUtils.error(e, log, &quot;调用渠道检查绑卡ID有效性失败，请求参数:{}&quot;, request);</span>
+<span class="nc" id="L183">        throw new CardBaseException(CardErrorCode.CHANNEL_CHECK_BIND, &quot;&quot;);</span>
+      }
+    });
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

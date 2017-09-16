@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.youzan.pay.unified.cashier.api.impl"/>
+
+    <bean id="cashierSignCheck"
+          class="com.youzan.pay.unified.cashier.api.impl.CashierSignCheckImpl"/>
+
+    <bean id="tradePayTypeFactory"
+          class="com.youzan.pay.unified.cashier.api.impl.factory.TradePayTypeFactory">
+        <property name="tradePayTypeMap">
+            <map>
+                <entry key="CASH_ON_DELIVERY" value-ref="agentDeleveryPayTypeHandler"/>
+                <entry key="PEERPAY" value-ref="agentDeleveryPayTypeHandler"/>
+                <entry key="WX_JS" value-ref="wxPayTypeHandler"/>
+                <entry key="ALIPAY_WAP" value-ref="alipayTypeHandler"/>
+                <entry key="ECARD" value-ref="ecardPayTypeHandler"/>
+                <entry key="BALANCE" value-ref="balancePayTypeHandler"/>
+                <entry key="GIFT_CARD" value-ref="giftCardPayTypeHandler"/>
+                <entry key="CREDIT_CARD" value-ref="creditCardHandler" />
+                <entry key="BAIFUBAO_WAP" value-ref="debitCardHandler" />
+                <entry key="PREPAID_PAY" value-ref="prepaidPayHandler"/>
+                <entry key="VALUE_CARD" value-ref="valueCardHandler"/>
+                <entry key="WX_H5" value-ref="wxPayTypeHandler"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="agentDeleveryPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.AgentDeleveryPayTypeHandler"/>
+
+    <bean id="alipayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.AlipayTypeHandler"/>
+
+    <bean id="ecardPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.EcardPayTypeHandler"/>
+
+    <bean id="wxPayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.WxPayTypeHandler"/>
+
+    <bean id="balancePayTypeHandler"
+          class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.BanlanceTypeHandler"/>
+
+
+    <bean id="giftCardPayTypeHandler" class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.GiftCardPayTypeHandler"/>
+    <bean id="creditCardHandler" class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.CreditCardHandler"/>
+    <bean id="debitCardHandler" class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.DebitCardHandler"/>
+    <bean id="prepaidPayHandler" class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.PrepaidPayHandler"/>
+    <bean id="valueCardHandler" class="com.youzan.pay.unified.cashier.api.impl.strategy.impl.ValueCardHandler"/>
+
+    <bean id="payToolsSortingCache"
+          class="com.youzan.pay.unified.cashier.service.cache.PayToolsSortingCache">
+        <property name="cacheMap">
+            <map>
+                <entry key="PREPAID_PAY" value="1"/>
+                <entry key="VALUE_CARD" value="2"/>
+                <entry key="WX_JS" value="3"></entry>
+                <entry key="WX_H5" value="4"></entry>
+                <entry key="ALIPAY_WAP" value="5"></entry>
+                <entry key="BAIFUBAO_WAP" value="6"></entry>
+                <entry key="CREDIT_CARD" value="7"></entry>
+                <entry key="BALANCE" value="8"></entry>
+                <entry key="ECARD" value="9"></entry>
+                <entry key="GIFT_CARD" value="10"></entry>
+                <entry key="PEERPAY" value="99"></entry>
+                <entry key="CASH_ON_DELIVERY" value="100"></entry>
+
+            </map>
+        </property>
+    </bean>
+
+    <bean id="aliPayEnvFilter" class="com.youzan.pay.unified.cashier.api.impl.filter.impl.AliPayEnvFilter"></bean>
+    <bean id="cardPayEnvFilter" class="com.youzan.pay.unified.cashier.api.impl.filter.impl.CardPayEnvFilter"></bean>
+    <bean id="commonPayEnvFilter" class="com.youzan.pay.unified.cashier.api.impl.filter.impl.CommonPayEnvFilter"></bean>
+    <bean id="wxPayEnvFilter" class="com.youzan.pay.unified.cashier.api.impl.filter.impl.WxPayEnvFilter"></bean>
+
+    <bean id="payToolFilterChain"  class="com.youzan.pay.unified.cashier.api.impl.filter.FilterChain">
+        <property name="filters">
+            <list>
+                <ref bean="aliPayEnvFilter"></ref>
+                <ref bean="cardPayEnvFilter"></ref>
+                <ref bean="wxPayEnvFilter"></ref>
+                <ref bean="commonPayEnvFilter"></ref>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="valueCard" class="com.youzan.pay.unified.cashier.api.impl.filter.dochain.ValueCard"></bean>
+    <bean id="checkCommon" class="com.youzan.pay.unified.cashier.api.impl.filter.dochain.CheckCommon">
+    </bean>
+    <bean id="checkPrepaidPay" class="com.youzan.pay.unified.cashier.api.impl.filter.dochain.CheckPrepaidPay"/>
+    <!-- 需要做特殊处理的卡片类型加在checkcommon前面-->
+    <bean id="payToolDoChain"  class="com.youzan.pay.unified.cashier.api.impl.filter.FilterChain">
+        <property name="filters">
+            <list>
+                <ref bean="checkPrepaidPay"></ref>
+                <ref bean="valueCard"></ref>
+                <ref bean="checkCommon"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <!--ip场景识别任务，给风控发送消息执行器线程池 -->
+    <bean id="ipSceneThreadPoolTaskExecutor"
+          class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 核心线程数，默认为1 -->
+        <property name="corePoolSize" value="3"/>
+        <property name="maxPoolSize" value="5"/>
+        <property name="queueCapacity" value="200"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SignCheckUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">utils</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.core.utils</a> &gt; <span class="el_source">SignCheckUtils.java</span></div><h1>SignCheckUtils.java</h1><pre class="source lang-java linenums">/**
+ * Youzan.com Inc. Copyright (c) 2012-2016 All Rights Reserved.
+ */
+package com.youzan.pay.unified.cashier.core.utils;
+
+import com.youzan.pay.core.utils.log.LogUtils;
+import com.youzan.platform.util.lang.StringUtil;
+import com.youzan.platform.util.security.MD5;
+
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 签名检查类
+ *
+ * @author wulonghui
+ * @version SignCheckUtils.java, v 0.1 2017-02-08 18:10
+ */
+<span class="nc" id="L27">@Slf4j</span>
+<span class="nc" id="L28">public class SignCheckUtils&lt;T&gt; {</span>
+
+  public static &lt;T&gt; boolean check(T data, String sign, String key, String signType)
+      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+
+<span class="nc" id="L33">    Class clazz = data.getClass();</span>
+
+<span class="nc" id="L35">    Field[] fields = clazz.getDeclaredFields();</span>
+
+<span class="nc" id="L37">    List&lt;String&gt; list = getFieldsList(data, fields, clazz);</span>
+
+<span class="nc" id="L39">    String sign_result = getSign(list, key, data, clazz);</span>
+
+<span class="nc bnc" id="L41" title="All 2 branches missed.">    if (sign.equals(sign_result)) {</span>
+<span class="nc" id="L42">      return true;</span>
+    }
+<span class="nc" id="L44">    return false;</span>
+  }
+
+  private static &lt;T&gt; List&lt;String&gt; getFieldsList(T data, Field[] fields, Class&lt;T&gt; clazz)
+      throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+<span class="nc" id="L50">    List&lt;String&gt; list = new LinkedList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">    for (int i = 0; i &lt; fields.length; i++) {</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;serialVersionUID&quot;)) {</span>
+<span class="nc" id="L54">        continue;</span>
+      }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;sign&quot;)) {</span>
+<span class="nc" id="L57">        continue;</span>
+      }
+<span class="nc bnc" id="L59" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;tradeDesc&quot;)) {</span>
+<span class="nc" id="L60">        continue;</span>
+      }
+<span class="nc bnc" id="L62" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;payerNickName&quot;)) {</span>
+<span class="nc" id="L63">        continue;</span>
+      }
+
+<span class="nc" id="L66">      String name = fields[i].getName();</span>
+<span class="nc" id="L67">      name = name.substring(0, 1).toUpperCase() + name.substring(1);</span>
+<span class="nc" id="L68">      Method method = clazz.getMethod(&quot;get&quot; + name);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">      String temp = method.invoke(data) == null ? null : method.invoke(data).toString();</span>
+
+<span class="nc bnc" id="L71" title="All 2 branches missed.">      if (StringUtil.isNotBlank(temp)) {</span>
+<span class="nc" id="L72">        list.add(fields[i].getName());</span>
+      }
+
+    }
+
+<span class="nc" id="L77">    Collections.sort(list);</span>
+
+<span class="nc" id="L79">    return list;</span>
+  }
+
+  /**
+   * h5收银台反射类
+   */
+  private static &lt;T&gt; List&lt;String&gt; getFieldsListForH5Cashier(T data, Field[] fields, Class&lt;T&gt; clazz)
+      throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+<span class="nc" id="L88">    List&lt;String&gt; list = new LinkedList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L90" title="All 2 branches missed.">    for (int i = 0; i &lt; fields.length; i++) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;serialVersionUID&quot;)) {</span>
+<span class="nc" id="L92">        continue;</span>
+      }
+<span class="nc bnc" id="L94" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;sign&quot;)) {</span>
+<span class="nc" id="L95">        continue;</span>
+      }
+<span class="nc bnc" id="L97" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;payEnviorment&quot;)) {</span>
+<span class="nc" id="L98">        continue;</span>
+      }
+<span class="nc bnc" id="L100" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;partnerReturnUrl&quot;)) {</span>
+<span class="nc" id="L101">        continue;</span>
+      }
+<span class="nc bnc" id="L103" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;payTool&quot;)) {</span>
+<span class="nc" id="L104">        continue;</span>
+      }
+
+<span class="nc" id="L107">      String name = fields[i].getName();</span>
+<span class="nc" id="L108">      name = name.substring(0, 1).toUpperCase() + name.substring(1);</span>
+<span class="nc" id="L109">      Method method = clazz.getMethod(&quot;get&quot; + name);</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">      String temp = method.invoke(data) == null ? null : method.invoke(data).toString();</span>
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">      if (StringUtil.isNotBlank(temp)) {</span>
+<span class="nc" id="L113">        list.add(fields[i].getName());</span>
+      }
+
+    }
+
+<span class="nc" id="L118">    Collections.sort(list);</span>
+
+<span class="nc" id="L120">    return list;</span>
+  }
+
+  private static &lt;T&gt; String getSign(List&lt;String&gt; list, String key, T data, Class&lt;T&gt; clazz)
+      throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+<span class="nc" id="L126">    StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">    for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="nc" id="L129">      String name = list.get(i);</span>
+<span class="nc" id="L130">      name = name.substring(0, 1).toUpperCase() + name.substring(1);</span>
+<span class="nc" id="L131">      Method method = clazz.getMethod(&quot;get&quot; + name);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">      String temp = method.invoke(data) == null ? null : method.invoke(data).toString();</span>
+
+<span class="nc bnc" id="L134" title="All 2 branches missed.">      if (i != list.size() - 1) {</span>
+<span class="nc" id="L135">        sb.append(list.get(i)).append(&quot;=&quot;).append(temp).append(&quot;&amp;&quot;);</span>
+      } else {
+<span class="nc" id="L137">        sb.append(list.get(i)).append(&quot;=&quot;).append(temp).append(&quot;&amp;&quot;);</span>
+      }
+
+    }
+
+<span class="nc" id="L142">    String beforeSign = sb.append(&quot;key=&quot;).append(key).toString();</span>
+
+
+<span class="nc" id="L145">    String afterSign = MD5.digest(beforeSign).toUpperCase();</span>
+
+<span class="nc" id="L147">    LogUtils.info(log, &quot;待签名字符串={},签名以后的字符串={}&quot;, beforeSign, afterSign);</span>
+
+<span class="nc" id="L149">    return afterSign;</span>
+  }
+
+  public static &lt;T&gt; String buildMd5Sign(T data, String key)
+      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+
+<span class="nc" id="L155">    Class clazz = data.getClass();</span>
+
+<span class="nc" id="L157">    Field[] fields = clazz.getDeclaredFields();</span>
+
+<span class="nc" id="L159">    List&lt;String&gt; list = getFieldsListForH5Cashier(data, fields, clazz);</span>
+
+<span class="nc" id="L161">    String sign_result = getSign(list, key, data, clazz);</span>
+
+<span class="nc" id="L163">    return sign_result;</span>
+  }
+
+  public static&lt;T&gt; boolean checkForCashier(T data, String sign, String key,
+                                     String singType)
+      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+<span class="nc" id="L169">    Class clazz = data.getClass();</span>
+
+<span class="nc" id="L171">    Field[] fields = clazz.getDeclaredFields();</span>
+
+<span class="nc" id="L173">    List&lt;String&gt; list = getFieldsListForCashier(data, fields, clazz);</span>
+
+<span class="nc" id="L175">    String sign_result = getSign(list, key, data, clazz);</span>
+
+<span class="nc bnc" id="L177" title="All 2 branches missed.">    if (sign.equals(sign_result)) {</span>
+<span class="nc" id="L178">      return true;</span>
+    }
+<span class="nc" id="L180">    return false;</span>
+  }
+
+  private static &lt;T&gt; List&lt;String&gt; getFieldsListForCashier(T data, Field[] fields, Class clazz)
+      throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+<span class="nc" id="L185">    List&lt;String&gt; list = new LinkedList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L187" title="All 2 branches missed.">    for (int i = 0; i &lt; fields.length; i++) {</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;serialVersionUID&quot;)) {</span>
+<span class="nc" id="L189">        continue;</span>
+      }
+<span class="nc bnc" id="L191" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;sign&quot;)) {</span>
+<span class="nc" id="L192">        continue;</span>
+      }
+<span class="nc bnc" id="L194" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;partnerReturnUrl&quot;)) {</span>
+<span class="nc" id="L195">        continue;</span>
+      }
+<span class="nc bnc" id="L197" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;payEnviorment&quot;)) {</span>
+<span class="nc" id="L198">        continue;</span>
+      }
+<span class="nc bnc" id="L200" title="All 2 branches missed.">      if (fields[i].getName().equals(&quot;payerId&quot;)) {</span>
+<span class="nc" id="L201">        continue;</span>
+      }
+
+<span class="nc" id="L204">      String name = fields[i].getName();</span>
+<span class="nc" id="L205">      name = name.substring(0, 1).toUpperCase() + name.substring(1);</span>
+<span class="nc" id="L206">      Method method = clazz.getMethod(&quot;get&quot; + name);</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">      String temp = method.invoke(data) == null ? null : method.invoke(data).toString();</span>
+
+<span class="nc bnc" id="L209" title="All 2 branches missed.">      if(StringUtil.isNotEmpty(temp)){</span>
+<span class="nc" id="L210">        list.add(fields[i].getName());</span>
+      }
+
+    }
+
+<span class="nc" id="L215">    Collections.sort(list);</span>
+
+<span class="nc" id="L217">    return list;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

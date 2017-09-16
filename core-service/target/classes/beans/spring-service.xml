@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="payInfoSendDataGroupManager" class="com.youzan.pay.unified.cashier.service.http.PayInfoSendDataGroupManager">
+        <constructor-arg index="0" value="${dg.card.url}"/>
+    </bean>
+
+    <bean id="payStrategyDepositoryService" class="com.youzan.pay.unified.cashier.service.depository.impl.PayStrategyDepositoryServiceImpl"/>
+
+    <!--jedis相关配置-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="100"/>
+        <property name="maxIdle" value="10"/>
+        <property name="maxWaitMillis" value="1000"/>
+        <property name="testOnBorrow" value="false"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="${codis.host}" />
+        <constructor-arg name="port" value="${codis.port}" type="int" />
+        <!--超时时间设置为300ms-->
+        <constructor-arg name="timeout" value="300" type="int" />
+    </bean>
+
+    <bean id="redisCacheManager" class="com.youzan.pay.core.cache.redis.impl.RedisCacheManagerImpl">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+</beans>

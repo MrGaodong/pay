@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.youzan</groupId>
+        <artifactId>parent-pom</artifactId>
+        <version>1.0.2</version>
+    </parent>
+
+    <groupId>com.youzan.pay</groupId>
+    <artifactId>unified.cashier</artifactId>
+    <version>20170914-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>http://maven.apache.org</url>
+
+    <!-- 子工程 Module -->
+    <modules>
+        <module>core-utils</module>
+        <module>core-model</module>
+        <module>core-service</module>
+        <module>dal</module>
+        <module>deploy</module>
+        <module>api</module>
+        <module>api-impl</module>
+        <module>intergration</module>
+        <module>test</module>
+    </modules>
+
+    <properties>
+        <pay-core.version>1.0.2-20170515-RELEASE</pay-core.version>
+
+        <common-utils.version>20170914-SNAPSHOT</common-utils.version>
+        <model.version>20170914-SNAPSHOT</model.version>
+        <dal.version>20170914-SNAPSHOT</dal.version>
+        <deploy.version>20170914-SNAPSHOT</deploy.version>
+        <service.version>20170914-SNAPSHOT</service.version>
+        <api.version>20170914-SNAPSHOT</api.version>
+        <api-impl.version>20170914-SNAPSHOT</api-impl.version>
+        <intergration.version>20170914-SNAPSHOT</intergration.version>
+        <pay.core-utils.version>1.0.1-SNAPSHOT</pay.core-utils.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <httpcomponents-httpclient.version>4.5.2</httpcomponents-httpclient.version>
+        <httpcomponents-fluent-hc.version>4.5.2</httpcomponents-fluent-hc.version>
+        <gson.version>2.3.1</gson.version>
+        <lombok.version>1.16.2</lombok.version>
+        <spring.version>3.2.13.RELEASE</spring.version>
+        <mybatis.version>3.2.8</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <mysql-connector-java.version>5.1.30</mysql-connector-java.version>
+        <druid.version>1.0.24</druid.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <jackson.version>1.9.13</jackson.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <bootstrap.version>3.1.0-RELEASE</bootstrap.version>
+        <kotlin.version>1.0.3</kotlin.version>
+        <unitils.version>3.4.2</unitils.version>
+        <powermock.version>1.6.6</powermock.version>
+        <validation-api.version>1.0.0.GA</validation-api.version>
+        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
+        <mockito.version>1.9.5</mockito.version>
+        <sonar.coverage.exclusions>
+            src/main/java/com/youzan/pay/unified/cashier/api/enums/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/request/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/constants/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/response/*
+        </sonar.coverage.exclusions>
+        <protostuff.version>1.0.8</protostuff.version>
+        <zxing.version>3.2.1</zxing.version>
+
+        <sonar.coverage.exclusions>
+            src/main/java/com/youzan/pay/unified/cashier/api/enums/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/request/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/response/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/result/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/constants/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/annotation/*,
+
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/model/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/enums/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/constant/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/convertor/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/factory/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/qrcode/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/utils/*,
+            src/main/java/com/youzan/pay/unified/cashier/api/impl/*,
+
+            src/main/java/com/youzan/pay/unified/cashier/service/exception/*,
+            src/main/java/com/youzan/pay/unified/cashier/service/resultcode/*,
+            src/main/java/com/youzan/pay/unified/cashier/service/resultcode/errorcode/*,
+
+            src/main/java/com/youzan/pay/unified/cashier/core/model/domain/*,
+
+            src/main/java/com/youzan/pay/unified/cashier/core/utils/model/*,
+            src/main/java/com/youzan/pay/unified/cashier/core/utils/enums/*,
+
+            src/main/java/com/youzan/pay/unified_cashier/bootstrap/*,
+
+            src/main/java/com/youzan/pay/unified/cashier/intergration/client/*,
+
+
+
+        </sonar.coverage.exclusions>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>assetcenter.spi</artifactId>
+                <version>1.0.0-20170908-RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.youzan.pay</groupId>
+                        <artifactId>core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>core</artifactId>
+                <version>0.2.9-20170710-RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>redis.clients</groupId>
+                        <artifactId>jedis</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay.core</groupId>
+                <artifactId>api-model</artifactId>
+                <version>1.0.5-20170710-RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay.core</groupId>
+                <artifactId>common-model</artifactId>
+                <version>1.0.5-20170710-RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.intergration</artifactId>
+                <version>20170914-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay.core</groupId>
+                <artifactId>core-utils</artifactId>
+                <version>${pay.core-utils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.model</artifactId>
+                <version>${model.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay.core</groupId>
+                <artifactId>mq-nsq</artifactId>
+                <version>${pay-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.api</artifactId>
+                <version>${api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.api-impl</artifactId>
+                <version>${api-impl.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.service</artifactId>
+                <version>${service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.dal</artifactId>
+                <version>${dal.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.deploy</artifactId>
+                <version>${deploy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay.unified_cashier</groupId>
+                <artifactId>intergration</artifactId>
+                <version>${intergration.version}</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.biz-shared</artifactId>
+                <version>${biz.shared.version}</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>com.youzan.platform</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.youzan</groupId>
+                        <artifactId>hawk-collect</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.youzan.platform</groupId>
+                        <artifactId>track-appender</artifactId>
+                    </exclusion>
+
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.platform</groupId>
+                <artifactId>haunt-client</artifactId>
+                <version>3.0.7-RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.alibaba</groupId>
+                        <artifactId>fastjson</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>unified.cashier.utils</artifactId>
+                <version>${common-utils.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-pool2</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>3.1.0-RELEASE</version>
+            </dependency>
+
+            <dependency>
+
+                <groupId>com.youzan</groupId>
+                <artifactId>hawk-collect</artifactId>
+                <version>1.0.10-RELEASE</version>
+            </dependency>
+
+
+
+
+            <dependency>
+                <groupId>com.youzan.platform</groupId>
+                <artifactId>track-appender</artifactId>
+                <version>2.3</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>log4j-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan</groupId>
+                <artifactId>common-model</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--unitils 数据库测试开始-->
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-core</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-database</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-dbmaintainer</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-dbunit</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-easymock</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-inject</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-mock</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-orm</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.unitils</groupId>
+                <artifactId>unitils-spring</artifactId>
+                <version>${unitils.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.192</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.kubek2k</groupId>
+                <artifactId>springockito-annotations</artifactId>
+                <version>1.0.9</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>${powermock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-mockito</artifactId>
+                <version>${powermock.version}</version>
+            </dependency>
+            <!--unitils 数据库测试结束-->
+
+            <!-- 基础jar依赖 start-->
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.19.0-GA</version>
+            </dependency>
+
+            <!-- apache commons -->
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <!-- apache commons -->
+
+            <!-- apache httpcomponents -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents-httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>${httpcomponents-fluent-hc.version}</version>
+            </dependency>
+            <!-- apache httpcomponents -->
+
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+
+            <!-- spring dependencies -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-afterburner</artifactId>
+                <version>2.8.9</version>
+            </dependency>
+
+            <!--guava依赖开始-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>19.0</version>
+            </dependency>
+
+            <!--guava依赖结束-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.1.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- 基础jar依赖 end-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>assetcenter.api</artifactId>
+                <version>1.0.0-20170908-RELEASE</version>
+                <exclusions>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.youzan.pay.cardvoucher</groupId>
+                <artifactId>cardvoucher-api</artifactId>
+                <version>1.0.0-20170822-RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>fund_channel.open-api</artifactId>
+                <version>1.0.0-20170911-RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>merchant-api</artifactId>
+                <version>0.0.7-20170804-RELEASE</version>
+            </dependency>
+            <!--卡券平台依赖-->
+            <dependency>
+                <groupId>com.youzan.pay</groupId>
+                <artifactId>microaccount-api</artifactId>
+                <version>0.2.6-20170801-RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan.framework</groupId>
+                <artifactId>redis-zan</artifactId>
+                <version>1.0.2-RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.youzan</groupId>
+                <artifactId>account-api</artifactId>
+                <version>1.1.16-RELEASE</version>
+            </dependency>
+
+            <!--引入httpclient包管理-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>4.1.3</version>
+            </dependency>
+
+            <!--google序列化工具-->
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-core</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-runtime</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+
+            <!--google二维码生成工具-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+
+            <!--redis客户端jedis-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <!--<version>2.9.0</version>-->
+                <version>2.6.1.yz-SNAPSHOT</version>
+            </dependency>
+
+            <!--文件上传下载客户端-->
+            <!--<dependency>-->
+                <!--<groupId>com.youzan</groupId>-->
+                <!--<artifactId>materials-api</artifactId>-->
+                <!--<version>1.0.0</version>-->
+            <!--</dependency>-->
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>4.5.2</version>
+            </dependency>
+
+            <!--id generator-->
+            <dependency>
+                <groupId>com.youzan.platform</groupId>
+                <artifactId>redisclient</artifactId>
+                <version>1.0.3-SNAPSHOT</version>
+            </dependency>
+            <!--天网接入-->
+            <dependency>
+                <groupId>com.youzan.skynet.appender</groupId>
+                <artifactId>skynet-appender</artifactId>
+                <version>1.0.6-RELEASE</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.9</version>
+                    <configuration>
+                        <excludes>
+                            <!--如果想把某些文件排除在统计之外，在这里配置-->
+                            <exclude>com/youzan/pay/accounting/core/config/*.class</exclude>
+                            <exclude>com/youzan/pay/accounting/core/**/*DO.class</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>pre-test</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>post-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Test.java</include>
+                            <include>**/Test*.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>1.16.4.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>2.7</version>
+                    <configuration>
+                        <formats>
+                            <format>xml</format>
+                        </formats>
+                        <instrumentation>
+                            <excludes>
+                                <!--如果想把某些文件排除在统计之外，在这里配置-->
+                                <exclude>com/youzan/pay/unified/cashier/api/constants/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/enums/*.class</exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/request/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/response/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/result/*.class</exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/*.class</exclude>
+
+                                <exclude>com/youzan/pay/unified/cashier/api/impl/*.class</exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/impl/convertor/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/impl/enums/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/api/impl/factory/*.class
+                                </exclude>
+                                <exclude>
+                                    com/youzan/pay/unified/cashier/api/impl/handler/impl/CashierPayTypeSearchHandler.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/service/exception/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/service/resultcode/*.class
+                                </exclude>
+                                <exclude>
+                                    com/youzan/pay/unified/cashier/service/resultcode/errorcode/*.class
+                                </exclude>
+                                <exclude>com/youzan/pay/unified/cashier/core/utils/*.class</exclude>
+                                <exclude>com/youzan/pay/unified/cashier/core/utils/exception/*.class</exclude>
+                                <exclude>com/youzan/pay/unified/cashier/core/utils/resultcode/*.class</exclude>
+
+                                <exclude>
+                                    com/youzan/pay/unified/cashier/intergration/client/impl/*.class
+                                </exclude>
+                            </excludes>
+                        </instrumentation>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>cobertura</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven3-plugin</artifactId>
+                    <version>5.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

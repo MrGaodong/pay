@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BankIconConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">utils</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.core.utils.common</a> &gt; <span class="el_source">BankIconConfig.java</span></div><h1>BankIconConfig.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.core.utils.common;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 银行code和对应icon的映射配置
+ *
+ * @author tao.ke Date: 2017/6/22 Time: 下午4:50
+ */
+<span class="nc" id="L11">public class BankIconConfig {</span>
+
+<span class="fc" id="L13">  private static final Map&lt;String, String&gt; BANK_ICON_CONFIG = new HashMap&lt;&gt;();</span>
+
+  private static final String DEFAULT_BANK_ICON = &quot;&quot;;
+
+  static {
+
+<span class="fc" id="L19">    BANK_ICON_CONFIG.put(&quot;ABC&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/abbe0a4ee9d868d5520af23e73df70d8.png&quot;);</span>
+<span class="fc" id="L20">    BANK_ICON_CONFIG.put(&quot;BOC&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/c1c72a105420a2006458d970c753dc86.png&quot;);</span>
+<span class="fc" id="L21">    BANK_ICON_CONFIG.put(&quot;CCB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/72be1db0fc6f1b8b8dda4c59c2471d34.png&quot;);</span>
+<span class="fc" id="L22">    BANK_ICON_CONFIG.put(&quot;CEB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/e165e9538d92f3da7d346b6b74cb99af.png&quot;);</span>
+<span class="fc" id="L23">    BANK_ICON_CONFIG.put(&quot;CIB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/81f01033e8678e2a239812878aee8827.png&quot;);</span>
+<span class="fc" id="L24">    BANK_ICON_CONFIG.put(&quot;ECITIC&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/0b511a871405de4f87ae5a14b195c908.png&quot;);</span>
+<span class="fc" id="L25">    BANK_ICON_CONFIG.put(&quot;CMBCHINA&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/25decaf1ccbd43438897f1de6331fa02.png&quot;);</span>
+<span class="fc" id="L26">    BANK_ICON_CONFIG.put(&quot;CMBC&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/18b1566bde4780c5084382dd02dd7d50.png&quot;);</span>
+<span class="fc" id="L27">    BANK_ICON_CONFIG.put(&quot;COMM&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/7898c558a7abc60027e04e9576a9f9ee.png&quot;);</span>
+<span class="fc" id="L28">    BANK_ICON_CONFIG.put(&quot;GDB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/33b790a03e4bdf53749bf7e1d108fdd0.png&quot;);</span>
+<span class="fc" id="L29">    BANK_ICON_CONFIG.put(&quot;HXB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/a42797d2134993be0ee8eb18d4fb0421.png&quot;);</span>
+<span class="fc" id="L30">    BANK_ICON_CONFIG.put(&quot;HZCB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/06546688683a7b7c4542b22aade6fb27.png\n&quot;);</span>
+<span class="fc" id="L31">    BANK_ICON_CONFIG.put(&quot;ICBC&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/ccd5fb4fd7aa511e44d202c6d5620cde.png&quot;);</span>
+<span class="fc" id="L32">    BANK_ICON_CONFIG.put(&quot;NBB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/a026e24141bded6071c7e5f1e08bca37.png&quot;);</span>
+<span class="fc" id="L33">    BANK_ICON_CONFIG.put(&quot;POST&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/ec5c998140b5e5e5e75702e499f59494.png&quot;);</span>
+<span class="fc" id="L34">    BANK_ICON_CONFIG.put(&quot;SHB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/bff9019f82660c13f58f5039f46b263e.png&quot;);</span>
+<span class="fc" id="L35">    BANK_ICON_CONFIG.put(&quot;PINGAN&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/fa3c4dc1b0462ceee243e8796ad01032.png&quot;);</span>
+<span class="fc" id="L36">    BANK_ICON_CONFIG.put(&quot;SPDB&quot;, &quot;https://img.yzcdn.cn/public_files/2017/06/21/f96f421e56d55e929984dbfefa4f6673.png&quot;);</span>
+<span class="fc" id="L37">    BANK_ICON_CONFIG.put(&quot;BCCB&quot;,&quot;https://img.yzcdn.cn/public_files/2017/06/27/7d444b891077f381628725b9259c7457.png&quot;);</span>
+<span class="fc" id="L38">  }</span>
+
+  /**
+   * 获取bankCode指定的对应iconurl地址
+   */
+  public static String getIconUrl(String bankCode) {
+
+<span class="fc" id="L45">    String icon = BANK_ICON_CONFIG.get(bankCode);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">    if (icon == null) {</span>
+<span class="nc" id="L47">      return DEFAULT_BANK_ICON;</span>
+    }
+<span class="fc" id="L49">    return icon;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

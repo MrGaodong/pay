@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CashierProcessCallBack.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.common</a> &gt; <span class="el_source">CashierProcessCallBack.java</span></div><h1>CashierProcessCallBack.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.intergration.common;
+
+/**
+ * @author tao.ke Date: 2017/6/12 Time: 上午10:32
+ */
+<span class="nc" id="L6">public abstract class CashierProcessCallBack&lt;T&gt; {</span>
+
+  /**
+   * 执行预处理操作，比如限流降级等动作，如果预处理需要快速失败，则抛出异常
+   */
+  public void beforeProcess() {
+<span class="nc" id="L12">  }</span>
+
+  /**
+   * 对参数进行检查，如果检查失败，则抛出异常
+   */
+  public void checkParams() {
+<span class="nc" id="L18">  }</span>
+
+  /**
+   * 核心的处理逻辑
+   */
+  public abstract T process();
+
+  /**
+   * 调用成功需要执行的方法，一般如果有需求会打印关键业务日志，增加时间次数监控等
+   */
+  public void succ(T result, long execTime) {
+<span class="nc" id="L29">  }</span>
+
+  /**
+   * 当业务步骤执行失败抛出异常的时候，该方法进行catch并进行返回封装处理
+   */
+  public void fail(Exception e) {
+
+<span class="nc" id="L36">  }</span>
+
+  /**
+   * 在finally模块中对一些资源进行释放
+   */
+  public void afterProcess() {
+<span class="nc" id="L42">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

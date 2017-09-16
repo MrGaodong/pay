@@ -1,0 +1,4 @@
+com/youzan/pay/unified/cashier/core/model/domain/MchBizLogInfo.class
+com/youzan/pay/unified/cashier/core/model/domain/BaseMonitorLogInfo.class
+com/youzan/pay/unified/cashier/core/model/domain/QRCodeImage.class
+com/youzan/pay/unified/cashier/core/model/domain/ApiDigestLogInfo.class

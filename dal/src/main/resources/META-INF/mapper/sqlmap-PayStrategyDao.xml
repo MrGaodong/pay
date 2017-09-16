@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youzan.pay.unified.cashier.dal.dao.PayStrategyDetailInfoDao">
+    <resultMap id="BaseResultMap"
+               type="com.youzan.pay.unified.cashier.dal.dataobject.PayStrategyDo">
+        <constructor>
+            <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="biz_strategy" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="biz_code" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="pay_channel" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="sort" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="available" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="visible" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,biz_strategy,biz_code,pay_channel,sort,available,visible,create_time,update_time
+    </sql>
+
+    <select id="selectByBizStrategyAndBizCode"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from unified_cashier_strategy where biz_strategy=#{bizStrategy} and biz_code=#{bizCode}
+    </select>
+
+    <select id="selectAllPayStrategy"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from unified_cashier_strategy where biz_strategy=#{bizStrategy}
+    </select>
+
+
+</mapper>

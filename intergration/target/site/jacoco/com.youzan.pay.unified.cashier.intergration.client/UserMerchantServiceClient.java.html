@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserMerchantServiceClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">intergration</a> &gt; <a href="index.source.html" class="el_package">com.youzan.pay.unified.cashier.intergration.client</a> &gt; <span class="el_source">UserMerchantServiceClient.java</span></div><h1>UserMerchantServiceClient.java</h1><pre class="source lang-java linenums">package com.youzan.pay.unified.cashier.intergration.client;
+
+import com.youzan.account.api.UserMerchantService;
+import com.youzan.account.api.dto.merchant.UserMerchantDto;
+import com.youzan.account.api.dto.merchant.UserMerchantSinleRequest;
+import com.youzan.pay.core.utils.log.LogUtils;
+import com.youzan.pay.unified.cashier.core.utils.exception.BaseException;
+import com.youzan.pay.unified.cashier.core.utils.resultcode.errorcode.CardErrorCode;
+import com.youzan.pay.unified.cashier.intergration.common.CashierHandleTemplate;
+import com.youzan.pay.unified.cashier.intergration.common.CashierProcessCallBack;
+
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author tao.ke Date: 2017/6/20 Time: 下午3:23
+ */
+@Component
+<span class="nc" id="L22">@Slf4j</span>
+<span class="nc" id="L23">public class UserMerchantServiceClient {</span>
+
+  @Resource
+  private UserMerchantService userMerchantService;
+
+  /**
+   * 查询单用户的对应支付id
+   */
+  public UserMerchantDto queryMchByUserId(UserMerchantSinleRequest request) {
+
+<span class="nc" id="L33">    return CashierHandleTemplate.execute(new CashierProcessCallBack&lt;UserMerchantDto&gt;() {</span>
+      @Override
+      public UserMerchantDto process() {
+<span class="nc" id="L36">        UserMerchantDto dto = userMerchantService.getMerchantIdSingleUserId(request);</span>
+<span class="nc" id="L37">        LogUtils.info(log, &quot;调用用户中心获取支付用户成功，result:{}&quot;, dto);</span>
+<span class="nc" id="L38">        return dto;</span>
+      }
+
+      @Override
+      public void succ(UserMerchantDto result, long execTime) {
+<span class="nc" id="L43">        LogUtils.info(log, &quot;调用用户中心获取支付用户成功，cost:{},result:{},request:{}&quot;, execTime, result,request);</span>
+<span class="nc" id="L44">      }</span>
+
+      @Override
+      public void fail(Exception e) {
+<span class="nc" id="L48">        LogUtils.error(e, log, &quot;调用用户中心获取支付用户失败，请求参数:{}&quot;, request);</span>
+<span class="nc" id="L49">        throw new BaseException(CardErrorCode.ACCOUNT_MERCHANT_USERNO);</span>
+      }
+    });
+
+
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
